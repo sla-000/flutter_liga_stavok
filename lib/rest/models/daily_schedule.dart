@@ -19,7 +19,7 @@ class Data {
   Map<String, dynamic> toJson() => _$DataToJson(this);
 
   @override
-  String toString() => 'Data{${toJson()}}';
+  String toString() => toJson().toString();
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -50,7 +50,7 @@ class SportEvent {
   Map<String, dynamic> toJson() => _$SportEventToJson(this);
 
   @override
-  String toString() => 'SportEvent{${toJson()}}';
+  String toString() => toJson().toString();
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -77,7 +77,7 @@ class Competitor {
   Map<String, dynamic> toJson() => _$CompetitorToJson(this);
 
   @override
-  String toString() => 'Competitor{${toJson()}}';
+  String toString() => toJson().toString();
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -103,7 +103,7 @@ class Season {
   Map<String, dynamic> toJson() => _$SeasonToJson(this);
 
   @override
-  String toString() => 'Season{${toJson()}}';
+  String toString() => toJson().toString();
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -126,7 +126,7 @@ class Tournament {
   Map<String, dynamic> toJson() => _$TournamentToJson(this);
 
   @override
-  String toString() => 'Tournament{${toJson()}}';
+  String toString() => toJson().toString();
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -145,7 +145,7 @@ class Category {
   Map<String, dynamic> toJson() => _$CategoryToJson(this);
 
   @override
-  String toString() => 'Category{${toJson()}}';
+  String toString() => toJson().toString();
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -164,5 +164,5 @@ class TournamentRound {
   Map<String, dynamic> toJson() => _$TournamentRoundToJson(this);
 
   @override
-  String toString() => 'TournamentRound{${toJson()}}';
+  String toString() => toJson().toString();
 }

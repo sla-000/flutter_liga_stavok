@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_liga_stavok/di/injections.dart';
 import 'package:flutter_liga_stavok/theme/physics.dart';
 import 'package:flutter_liga_stavok/utils/logging.dart';
-import 'package:flutter_liga_stavok/widgets/controls.dart';
+import 'package:flutter_liga_stavok/widgets/controls/controls.dart';
 import 'package:flutter_liga_stavok/widgets/liga_stavok.dart';
 import 'package:flutter_liga_stavok/widgets/placeholder.dart';
 
@@ -45,14 +46,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+
+    injectionsInit();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
+
+    injectionsDispose();
   }
 
   @override
