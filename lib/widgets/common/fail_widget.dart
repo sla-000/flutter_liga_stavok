@@ -4,10 +4,12 @@ class FailWidget extends StatelessWidget {
   const FailWidget({
     Key key,
     this.child,
+    @required this.error,
     this.onTap,
   }) : super(key: key);
 
   final Widget child;
+  final String error;
   final void Function() onTap;
 
   @override
@@ -19,9 +21,12 @@ class FailWidget extends StatelessWidget {
           Center(
             child: InkWell(
               onTap: onTap,
-              child: Icon(
-                onTap == null ? Icons.warning : Icons.refresh,
-                size: 24,
+              child: Tooltip(
+                message: error,
+                child: Icon(
+                  onTap == null ? Icons.warning : Icons.refresh,
+                  size: 24,
+                ),
               ),
             ),
           ),

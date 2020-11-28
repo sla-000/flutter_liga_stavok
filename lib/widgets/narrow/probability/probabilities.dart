@@ -28,6 +28,7 @@ class Probabilities extends StatelessWidget {
           }
 
           return FailWidget(
+            error: snapshot.error.toString(),
             child: _Probabilities(),
             onTap: () {
               _log.info(() => 'build: onTap: error=${snapshot.error}');

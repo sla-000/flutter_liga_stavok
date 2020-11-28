@@ -27,6 +27,7 @@ class Head2Head extends StatelessWidget {
           }
 
           return FailWidget(
+            error: snapshot.error.toString(),
             child: const _Head2Head(),
             onTap: () {
               _log.info(() => 'build: onTap: error=${snapshot.error}');
