@@ -7,7 +7,7 @@ final Logger _log = Logger('TimerBloc');
 
 class TimerBloc extends Bloc<void> {
   TimerBloc() {
-    Timer(duration, _onTimer);
+    _timer = Timer(duration, _onTimer);
   }
 
   Timer _timer;
@@ -18,7 +18,7 @@ class TimerBloc extends Bloc<void> {
   void dispose() {
     super.dispose();
 
-    _timer.cancel();
+    _timer?.cancel();
   }
 
   void _onTimer() {
@@ -27,7 +27,6 @@ class TimerBloc extends Bloc<void> {
     add(null);
 
     _timer.cancel();
-
     _timer = Timer(duration, _onTimer);
   }
 }
