@@ -33,7 +33,10 @@ class LastMeetings extends StatelessWidget {
         .toList(growable: false);
   }
 
-  Widget _getChild(head_2_head.Result result) => OneLastResult(
-        result: result,
+  Widget _getChild(head_2_head.Result result) => Padding(
+        padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+        child: OneLastResult(
+          result: result,
+        ),
       );
 }

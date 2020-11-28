@@ -62,14 +62,7 @@ class _Probabilities extends StatelessWidget {
   Widget build(BuildContext context) {
     if ((probabilities?.markets?.isEmpty ?? true) ||
         (probabilities?.markets[0]?.outcomes?.length ?? 0) < 3) {
-      return const ProbabilityData(
-        name0: 'home_team_winner',
-        value0: 0,
-        name1: 'draw',
-        value1: 0,
-        name2: 'away_team_winner',
-        value2: 0,
-      );
+      return const Center();
     }
 
     return ProbabilityData(

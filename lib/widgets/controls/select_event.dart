@@ -68,14 +68,19 @@ class Competitors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text('${competitors[0].name} '
-            '(${competitors[0].abbreviation})'),
-        const Text(' : '),
-        Text('(${competitors[1].abbreviation}) '
-            '${competitors[1].name}'),
+        Text('${competitors[0].abbreviation}'
+            ' :'
+            ' ${competitors[1].abbreviation}'),
+        Text(
+          '${competitors[0].name}'
+          ' :'
+          ' ${competitors[1].name}',
+          overflow: TextOverflow.ellipsis,
+        ),
       ],
     );
   }
