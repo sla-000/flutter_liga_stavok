@@ -19,29 +19,30 @@ class Probabilities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<match_probabilities.Probabilities>(
-        stream: getIt.get<WinProbabilityBloc>().stream,
-        builder: (BuildContext context,
-            AsyncSnapshot<match_probabilities.Probabilities> snapshot) {
-          if (snapshot.hasError) {
-            if (snapshot.error is AppBusy) {
-              return const BusyWidget(child: _Probabilities());
-            }
-
-            return FailWidget(
-              child: _Probabilities(),
-              onTap: () {
-                _log.info(() => 'build: onTap: error=${snapshot.error}');
-                getIt.get<WinProbabilityBloc>().resubscribe();
-              },
-            );
+      stream: getIt.get<WinProbabilityBloc>().stream,
+      builder: (BuildContext context,
+          AsyncSnapshot<match_probabilities.Probabilities> snapshot) {
+        if (snapshot.hasError) {
+          if (snapshot.error is AppBusy) {
+            return const BusyWidget(child: _Probabilities());
           }
 
-          if (snapshot.hasData) {
-            return _Probabilities(probabilities: snapshot.data);
-          }
+          return FailWidget(
+            child: _Probabilities(),
+            onTap: () {
+              _log.info(() => 'build: onTap: error=${snapshot.error}');
+              getIt.get<WinProbabilityBloc>().resubscribe();
+            },
+          );
+        }
 
-          return _Probabilities();
-        });
+        if (snapshot.hasData) {
+          return _Probabilities(probabilities: snapshot.data);
+        }
+
+        return _Probabilities();
+      },
+    );
   }
 }
 

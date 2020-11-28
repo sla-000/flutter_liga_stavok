@@ -5,7 +5,8 @@ import 'package:flutter_liga_stavok/rest/models/daily_results.dart'
     as daily_results;
 import 'package:flutter_liga_stavok/rest/models/daily_schedule.dart'
     as daily_schedule;
-import 'package:flutter_liga_stavok/rest/models/head_2_head.dart' as head2Head;
+import 'package:flutter_liga_stavok/rest/models/head_2_head.dart'
+    as head_2_head;
 import 'package:flutter_liga_stavok/rest/models/match_probabilities.dart'
     as match_probabilities;
 import 'package:flutter_liga_stavok/rest/models/team_statistics.dart'
@@ -87,7 +88,7 @@ Future<daily_schedule.Data> getDailySchedule(DateTime date) async {
   return parsedData;
 }
 
-Future<head2Head.Data> getHead2Head(
+Future<head_2_head.Data> getHead2Head(
   String teamHomeId,
   String teamAwayId,
 ) async {
@@ -102,8 +103,8 @@ Future<head2Head.Data> getHead2Head(
   final String dataStr = await network.getData();
 
   final dynamic data = json.decode(dataStr);
-  final head2Head.Data parsedData =
-      head2Head.Data.fromJson(data as Map<String, dynamic>);
+  final head_2_head.Data parsedData =
+      head_2_head.Data.fromJson(data as Map<String, dynamic>);
   return parsedData;
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/theme/elevations.dart';
 import 'package:flutter_liga_stavok/theme/paddings.dart';
+import 'package:flutter_liga_stavok/widgets/narrow/head2head/head2head.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/probability/probabilities.dart';
 
 class LigaStavokNarrow extends StatelessWidget {
@@ -21,6 +22,7 @@ class LigaStavokNarrow extends StatelessWidget {
             Text('LigaStavokNarrow'),
             SizedBox(height: 8),
             Probabilities(),
+            Head2Head(),
           ],
         ),
       ),
