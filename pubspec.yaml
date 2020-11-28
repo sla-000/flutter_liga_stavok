@@ -35,6 +35,8 @@ dependencies:
 
   logging: ^0.11.4
 
+  rxdart: ^0.24.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
