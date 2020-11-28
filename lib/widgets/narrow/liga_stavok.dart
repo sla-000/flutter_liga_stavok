@@ -22,12 +22,10 @@ class LigaStavokNarrow extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Text('LigaStavokNarrow'),
-              SizedBox(height: 8),
               Card(
                 elevation: kCardElevation,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: kCardPadding,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,16 +37,16 @@ class LigaStavokNarrow extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Card(
                 elevation: kCardElevation,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: kCardPadding,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const <Widget>[
-                      Text('MatchProbabilities'),
+                      Text('Head2Head'),
                       SizedBox(height: 8),
                       Head2Head(),
                     ],

@@ -44,8 +44,6 @@ class OneLastResult extends StatelessWidget {
           Text('period 2: ${result.sportEventStatus.periodScores[1].homeScore}'
               ' :'
               ' ${result.sportEventStatus.periodScores[1].awayScore}'),
-        Text('matchStatus: ${result.sportEventStatus.matchStatus}'),
-        Text('status: ${result.sportEventStatus.status}'),
       ],
     );
   }
