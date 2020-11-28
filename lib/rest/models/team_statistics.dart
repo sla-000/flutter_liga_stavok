@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'team_statistics.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Data {
   String generatedAt;
   String schema;
@@ -28,7 +28,7 @@ class Data {
   Map<String, dynamic> toJson() => _$DataToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Tournament {
   String id;
   String name;
@@ -45,7 +45,7 @@ class Tournament {
   Map<String, dynamic> toJson() => _$TournamentToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Sport {
   String id;
   String name;
@@ -57,7 +57,7 @@ class Sport {
   Map<String, dynamic> toJson() => _$SportToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class CurrentSeason {
   String id;
   String name;
@@ -73,7 +73,7 @@ class CurrentSeason {
   Map<String, dynamic> toJson() => _$CurrentSeasonToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Team {
   String id;
   String name;
@@ -97,7 +97,7 @@ class Team {
   Map<String, dynamic> toJson() => _$TeamToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Category {
   String id;
   String name;
@@ -111,7 +111,7 @@ class Category {
   Map<String, dynamic> toJson() => _$CategoryToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class TeamSeasonCoverage {
   int scheduled;
   int played;
@@ -126,7 +126,7 @@ class TeamSeasonCoverage {
   Map<String, dynamic> toJson() => _$TeamSeasonCoverageToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class TeamStatistics {
   int matchesPlayed;
   int matchesWon;
@@ -169,7 +169,7 @@ class TeamStatistics {
   Map<String, dynamic> toJson() => _$TeamStatisticsToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class GoalAttempts {
   int total;
   int matches;
@@ -182,7 +182,7 @@ class GoalAttempts {
   Map<String, dynamic> toJson() => _$GoalAttemptsToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class PlayerStatistics {
   String id;
   String name;
@@ -203,7 +203,7 @@ class PlayerStatistics {
   Map<String, dynamic> toJson() => _$PlayerStatisticsToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Statistics {
   GoalAttempts goalsScored;
   GoalAttempts shotsOnGoal;
@@ -236,7 +236,7 @@ class Statistics {
   Map<String, dynamic> toJson() => _$StatisticsToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class GoaltimeStatistics {
   Scored scored;
   Scored conceded;
@@ -249,7 +249,7 @@ class GoaltimeStatistics {
   Map<String, dynamic> toJson() => _$GoaltimeStatisticsToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Scored {
   int total;
   List<Period> period;
@@ -261,7 +261,7 @@ class Scored {
   Map<String, dynamic> toJson() => _$ScoredToJson(this);
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Period {
   String name;
   int value;

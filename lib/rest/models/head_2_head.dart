@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'head_2_head.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Data {
   Data({
     this.generatedAt,
@@ -21,10 +23,10 @@ class Data {
   Map<String, dynamic> toJson() => _$DataToJson(this);
 
   @override
-  String toString() => 'Data{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class LastMeetings {
   LastMeetings({
     this.results,
@@ -38,10 +40,10 @@ class LastMeetings {
   Map<String, dynamic> toJson() => _$LastMeetingsToJson(this);
 
   @override
-  String toString() => 'LastMeetings{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Result {
   Result({
     this.sportEvent,
@@ -55,10 +57,10 @@ class Result {
   Map<String, dynamic> toJson() => _$ResultToJson(this);
 
   @override
-  String toString() => 'Result{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class SportEvent {
   SportEvent({
     this.id,
@@ -85,10 +87,10 @@ class SportEvent {
   Map<String, dynamic> toJson() => _$SportEventToJson(this);
 
   @override
-  String toString() => 'SportEvent{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Team {
   Team({
     this.id,
@@ -110,10 +112,10 @@ class Team {
   Map<String, dynamic> toJson() => _$TeamToJson(this);
 
   @override
-  String toString() => 'Team{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Season {
   Season({
     this.id,
@@ -135,10 +137,10 @@ class Season {
   Map<String, dynamic> toJson() => _$SeasonToJson(this);
 
   @override
-  String toString() => 'Season{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Tournament {
   Tournament({
     this.id,
@@ -157,10 +159,10 @@ class Tournament {
   Map<String, dynamic> toJson() => _$TournamentToJson(this);
 
   @override
-  String toString() => 'Tournament{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Category {
   Category({
     this.id,
@@ -175,10 +177,10 @@ class Category {
   Map<String, dynamic> toJson() => _$CategoryToJson(this);
 
   @override
-  String toString() => 'Category{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class TournamentRound {
   TournamentRound({
     this.type,
@@ -205,10 +207,10 @@ class TournamentRound {
   Map<String, dynamic> toJson() => _$TournamentRoundToJson(this);
 
   @override
-  String toString() => 'TournamentRound{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Venue {
   Venue({
     this.id,
@@ -232,10 +234,10 @@ class Venue {
   Map<String, dynamic> toJson() => _$VenueToJson(this);
 
   @override
-  String toString() => 'Venue{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class SportEventStatus {
   SportEventStatus({
     this.status,
@@ -258,10 +260,10 @@ class SportEventStatus {
   Map<String, dynamic> toJson() => _$SportEventStatusToJson(this);
 
   @override
-  String toString() => 'SportEventStatus{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class PeriodScore {
   PeriodScore({
     this.homeScore,
@@ -280,7 +282,7 @@ class PeriodScore {
   Map<String, dynamic> toJson() => _$PeriodScoreToJson(this);
 
   @override
-  String toString() => 'PeriodScore{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
 // {

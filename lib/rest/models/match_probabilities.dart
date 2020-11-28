@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'match_probabilities.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Data {
   Data({
     this.generatedAt,
@@ -24,7 +24,7 @@ class Data {
   String toString() => toJson().toString();
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Probabilities {
   Probabilities({
     this.markets,
@@ -41,7 +41,7 @@ class Probabilities {
   String toString() => toJson().toString();
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Market {
   Market({
     this.name,
@@ -59,7 +59,7 @@ class Market {
   String toString() => toJson().toString();
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Outcome {
   Outcome({
     this.name,
@@ -78,7 +78,7 @@ class Outcome {
   String toString() => toJson().toString();
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class SportEvent {
   SportEvent({
     this.id,
@@ -107,7 +107,7 @@ class SportEvent {
   String toString() => toJson().toString();
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Competitor {
   Competitor({
     this.id,
@@ -134,7 +134,7 @@ class Competitor {
   String toString() => toJson().toString();
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Season {
   Season({
     this.id,
@@ -160,7 +160,7 @@ class Season {
   String toString() => toJson().toString();
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Tournament {
   Tournament({
     this.id,
@@ -183,7 +183,7 @@ class Tournament {
   String toString() => toJson().toString();
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Category {
   Category({
     this.id,
@@ -202,7 +202,7 @@ class Category {
   String toString() => toJson().toString();
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class TournamentRound {
   TournamentRound({
     this.type,

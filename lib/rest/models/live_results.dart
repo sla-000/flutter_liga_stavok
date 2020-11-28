@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'live_results.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Data {
   Data({
     this.generatedAt,
@@ -22,7 +22,7 @@ class Data {
   String toString() => 'Data{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Result {
   Result({
     this.sportEvent,
@@ -40,7 +40,7 @@ class Result {
   String toString() => 'Result{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class SportEvent {
   SportEvent({
     this.id,
@@ -69,7 +69,7 @@ class SportEvent {
   String toString() => 'SportEvent{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Competitor {
   Competitor({
     this.id,
@@ -96,7 +96,7 @@ class Competitor {
   String toString() => 'Competitor{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Season {
   Season({
     this.id,
@@ -122,7 +122,7 @@ class Season {
   String toString() => 'Season{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Tournament {
   Tournament({
     this.id,
@@ -145,7 +145,7 @@ class Tournament {
   String toString() => 'Tournament{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Category {
   Category({
     this.id,
@@ -164,7 +164,7 @@ class Category {
   String toString() => 'Category{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class TournamentRound {
   TournamentRound({
     this.type,
@@ -183,7 +183,7 @@ class TournamentRound {
   String toString() => 'TournamentRound{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class SportEventStatus {
   SportEventStatus({
     this.status,
@@ -212,7 +212,7 @@ class SportEventStatus {
   String toString() => 'SportEventStatus{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Clock {
   Clock({
     this.matchTime,
@@ -228,7 +228,7 @@ class Clock {
   String toString() => 'Clock{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class PeriodScore {
   PeriodScore({
     this.homeScore,

@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'daily_results.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Data {
   String generatedAt;
   String schema;
@@ -18,7 +18,7 @@ class Data {
   String toString() => 'Data{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class DailyResults {
   SportEvent sportEvent;
   SportEventStatus sportEventStatus;
@@ -34,7 +34,7 @@ class DailyResults {
   String toString() => 'DailyResults{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class SportEvent {
   String id;
   String scheduled;
@@ -64,7 +64,7 @@ class SportEvent {
   String toString() => 'SportEvent{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class TournamentRound {
   String type;
   int number;
@@ -92,7 +92,7 @@ class TournamentRound {
   String toString() => 'TournamentRound{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Season {
   String id;
   String name;
@@ -117,7 +117,7 @@ class Season {
   String toString() => 'Season{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Tournament {
   String id;
   String name;
@@ -135,7 +135,7 @@ class Tournament {
   String toString() => 'Tournament{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Sport {
   String id;
   String name;
@@ -150,7 +150,7 @@ class Sport {
   String toString() => 'Sport{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Competitors {
   String id;
   String name;
@@ -176,7 +176,7 @@ class Competitors {
   String toString() => 'Competitors{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Venue {
   String id;
   String name;
@@ -203,7 +203,7 @@ class Venue {
   String toString() => 'Venue{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class SportEventStatus {
   String status;
   String matchStatus;
@@ -229,7 +229,7 @@ class SportEventStatus {
   String toString() => 'SportEventStatus{${toJson()}}';
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class PeriodScores {
   int homeScore;
   int awayScore;
