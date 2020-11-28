@@ -74,10 +74,11 @@ class Controls extends StatelessWidget {
 
       if (selectedEvent != null) {
         _log.finest(() => '_getToday: selectedEvent=$selectedEvent');
-        getIt.get<SelectedEventBloc>().select(selectedEvent);
+        getIt.get<SelectedEventBloc>().add(selectedEvent);
       }
     } on Exception catch (error) {
       _log.warning(() => '_getToday: error=$error');
+      getIt.get<SelectedEventBloc>().addError(error);
       showError(context, error);
     }
   }

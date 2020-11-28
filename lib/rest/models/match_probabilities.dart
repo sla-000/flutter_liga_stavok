@@ -1,22 +1,78 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'daily_schedule.g.dart';
+part 'match_probabilities.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Data {
   Data({
     this.generatedAt,
     this.schema,
-    this.sportEvents,
+    this.sportEvent,
+    this.probabilities,
   });
 
   final DateTime generatedAt;
   final String schema;
-  final List<SportEvent> sportEvents;
+  final SportEvent sportEvent;
+  final Probabilities probabilities;
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
   Map<String, dynamic> toJson() => _$DataToJson(this);
+
+  @override
+  String toString() => toJson().toString();
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class Probabilities {
+  Probabilities({
+    this.markets,
+  });
+
+  final List<Market> markets;
+
+  factory Probabilities.fromJson(Map<String, dynamic> json) =>
+      _$ProbabilitiesFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProbabilitiesToJson(this);
+
+  @override
+  String toString() => toJson().toString();
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class Market {
+  Market({
+    this.name,
+    this.outcomes,
+  });
+
+  final String name;
+  final List<Outcome> outcomes;
+
+  factory Market.fromJson(Map<String, dynamic> json) => _$MarketFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MarketToJson(this);
+
+  @override
+  String toString() => toJson().toString();
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class Outcome {
+  Outcome({
+    this.name,
+    this.probability,
+  });
+
+  final String name;
+  final double probability;
+
+  factory Outcome.fromJson(Map<String, dynamic> json) =>
+      _$OutcomeFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OutcomeToJson(this);
 
   @override
   String toString() => toJson().toString();
@@ -28,7 +84,6 @@ class SportEvent {
     this.id,
     this.scheduled,
     this.startTimeTbd,
-    this.status,
     this.tournamentRound,
     this.season,
     this.tournament,
@@ -38,7 +93,6 @@ class SportEvent {
   final String id;
   final DateTime scheduled;
   final bool startTimeTbd;
-  final String status;
   final TournamentRound tournamentRound;
   final Season season;
   final Tournament tournament;
@@ -168,57 +222,12 @@ class TournamentRound {
 }
 
 // {
-//     "generated_at": "2020-11-28T09:12:28+00:00",
-//     "schema": "http:\/\/schemas.sportradar.com\/bsa\/soccer\/v1\/json\/endpoints\/soccer\/schedule.json",
-//     "sport_events": [{
-//         "id": "sr:match:24506920",
-//         "scheduled": "2020-11-28T00:30:00+00:00",
-//         "start_time_tbd": false,
-//         "status": "closed",
-//         "tournament_round": {
-//             "type": "group",
-//             "number": 1
-//         },
-//         "season": {
-//             "id": "sr:season:74909",
-//             "name": "Int. Friendly Games W 2020",
-//             "start_date": "2020-01-01",
-//             "end_date": "2020-12-31",
-//             "year": "2020",
-//             "tournament_id": "sr:tournament:852"
-//         },
-//         "tournament": {
-//             "id": "sr:tournament:852",
-//             "name": "Int. Friendly Games W",
-//             "sport": {
-//                 "id": "sr:sport:1",
-//                 "name": "Soccer"
-//             },
-//             "category": {
-//                 "id": "sr:category:4",
-//                 "name": "International"
-//             }
-//         },
-//         "competitors": [{
-//             "id": "sr:competitor:7411",
-//             "name": "Brazil",
-//             "country": "Brazil",
-//             "country_code": "BRA",
-//             "abbreviation": "BRA",
-//             "qualifier": "home"
-//         }, {
-//             "id": "sr:competitor:182526",
-//             "name": "Ecuador",
-//             "country": "Ecuador",
-//             "country_code": "ECU",
-//             "abbreviation": "ECU",
-//             "qualifier": "away"
-//         }]
-//     }, {
+//     "generated_at": "2020-11-28T09:12:48+00:00",
+//     "schema": "http:\/\/schemas.sportradar.com\/bsa\/soccer\/v1\/json\/endpoints\/soccer\/match_probabilities.json",
+//     "sport_event": {
 //         "id": "sr:match:24572856",
 //         "scheduled": "2020-11-28T14:00:00+00:00",
 //         "start_time_tbd": false,
-//         "status": "not_started",
 //         "tournament_round": {
 //             "type": "group",
 //             "number": 1
@@ -258,5 +267,20 @@ class TournamentRound {
 //             "abbreviation": "ZAM",
 //             "qualifier": "away"
 //         }]
-//     }]
+//     },
+//     "probabilities": {
+//         "markets": [{
+//             "name": "3way",
+//             "outcomes": [{
+//                 "name": "home_team_winner",
+//                 "probability": 71.2
+//             }, {
+//                 "name": "away_team_winner",
+//                 "probability": 10.9
+//             }, {
+//                 "name": "draw",
+//                 "probability": 18
+//             }]
+//         }]
+//     }
 // }

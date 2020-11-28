@@ -6,7 +6,5 @@ import 'package:logging/logging.dart';
 final Logger _log = Logger('SelectedEventBloc');
 
 class SelectedEventBloc extends Bloc<dailySchedule.SportEvent> {
-  void select(dailySchedule.SportEvent sportEvent) {
-    add(sportEvent);
-  }
+  //
 }

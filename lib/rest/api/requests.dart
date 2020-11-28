@@ -2,12 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter_liga_stavok/rest/api/network.dart';
 import 'package:flutter_liga_stavok/rest/models/daily_results.dart'
-    as daylyResults;
+    as daily_results;
 import 'package:flutter_liga_stavok/rest/models/daily_schedule.dart'
-    as dailySchedule;
+    as daily_schedule;
 import 'package:flutter_liga_stavok/rest/models/head_2_head.dart' as head2Head;
+import 'package:flutter_liga_stavok/rest/models/match_probabilities.dart'
+    as match_probabilities;
 import 'package:flutter_liga_stavok/rest/models/team_statistics.dart'
-    as teatStatistics;
+    as team_statistics;
 import 'package:flutter_liga_stavok/utils/dateTime.dart';
 import 'package:logging/logging.dart';
 
@@ -31,7 +33,7 @@ final DateTime selectedDate = DateUtil.stringToDateFormatter('2018-06-15');
 /// Throws:
 /// - some json decode errors
 /// - Http errors
-Future<daylyResults.Data> getDailyResults(DateTime date) async {
+Future<daily_results.Data> getDailyResults(DateTime date) async {
   _log.finest(() => 'getDailyResults: date=$date');
 
   final String selectedDate = DateUtil.dateTimeToStringFormatter(date);
@@ -44,12 +46,12 @@ Future<daylyResults.Data> getDailyResults(DateTime date) async {
   final String dataStr = await network.getData();
 
   final dynamic data = json.decode(dataStr);
-  final daylyResults.Data parsedData =
-      daylyResults.Data.fromJson(data as Map<String, dynamic>);
+  final daily_results.Data parsedData =
+      daily_results.Data.fromJson(data as Map<String, dynamic>);
   return parsedData;
 }
 
-Future<teatStatistics.Data> getTeamStatistics(
+Future<team_statistics.Data> getTeamStatistics(
     String seasonId, String teamId) async {
   _log.finest(() => 'getTeamStatistics: seasonId=$seasonId, teamId=$teamId');
 
@@ -62,12 +64,12 @@ Future<teatStatistics.Data> getTeamStatistics(
   final String dataStr = await network.getData();
 
   final dynamic data = json.decode(dataStr);
-  final teatStatistics.Data parsedData =
-      teatStatistics.Data.fromJson(data as Map<String, dynamic>);
+  final team_statistics.Data parsedData =
+      team_statistics.Data.fromJson(data as Map<String, dynamic>);
   return parsedData;
 }
 
-Future<dailySchedule.Data> getDailySchedule(DateTime date) async {
+Future<daily_schedule.Data> getDailySchedule(DateTime date) async {
   _log.finest(() => 'getDailySchedule: date=$date');
 
   final String selectedDate = DateUtil.dateTimeToStringFormatter(date);
@@ -80,8 +82,8 @@ Future<dailySchedule.Data> getDailySchedule(DateTime date) async {
   final String dataStr = await network.getData();
 
   final dynamic data = json.decode(dataStr);
-  final dailySchedule.Data parsedData =
-      dailySchedule.Data.fromJson(data as Map<String, dynamic>);
+  final daily_schedule.Data parsedData =
+      daily_schedule.Data.fromJson(data as Map<String, dynamic>);
   return parsedData;
 }
 
@@ -105,19 +107,35 @@ Future<head2Head.Data> getHead2Head(
   return parsedData;
 }
 
-Future<String> getMatchTimeline(String matchId) async {
-  _log.finest(() => 'getHead2Head: matchId=$matchId');
+Future<match_probabilities.Data> getMatchProbabilities(String matchId) async {
+  _log.finest(() => 'getMatchProbabilities: matchId=$matchId');
 
   final Network network = Network('$urlPrefix'
       '/matches/$matchId'
-      '/summary.$format'
+      '/probabilities.$format'
       '$urlSuffix');
 
   final String dataStr = await network.getData();
 
-  // final dynamic data = json.decode(dataStr);
-  // final head2Head.Data parsedData =
-  //     head2Head.Data.fromJson(data as Map<String, dynamic>);
-  // return parsedData;
-  return dataStr;
+  final dynamic data = json.decode(dataStr);
+  final match_probabilities.Data parsedData =
+      match_probabilities.Data.fromJson(data as Map<String, dynamic>);
+  return parsedData;
 }
+
+// Future<String> getMatchTimeline(String matchId) async {
+//   _log.finest(() => 'getHead2Head: matchId=$matchId');
+//
+//   final Network network = Network('$urlPrefix'
+//       '/matches/$matchId'
+//       '/summary.$format'
+//       '$urlSuffix');
+//
+//   final String dataStr = await network.getData();
+//
+//   // final dynamic data = json.decode(dataStr);
+//   // final head2Head.Data parsedData =
+//   //     head2Head.Data.fromJson(data as Map<String, dynamic>);
+//   // return parsedData;
+//   return dataStr;
+// }
