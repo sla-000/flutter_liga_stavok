@@ -31,9 +31,6 @@ const String urlSuffix = '?api_key=$apiKey';
 
 final DateTime selectedDate = DateUtil.stringToDateFormatter('2018-06-15');
 
-/// Throws:
-/// - some json decode errors
-/// - Http errors
 Future<daily_results.Data> getDailyResults(DateTime date) async {
   _log.finest(() => 'getDailyResults: date=$date');
 

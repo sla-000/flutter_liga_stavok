@@ -7,33 +7,53 @@ part of 'team_statistics.dart';
 // **************************************************************************
 
 Data _$DataFromJson(Map<String, dynamic> json) {
-  return Data(
-    generatedAt: json['generated_at'] as String,
-    schema: json['schema'] as String,
-    tournament: json['tournament'] == null
-        ? null
-        : Tournament.fromJson(json['tournament'] as Map<String, dynamic>),
-    team: json['team'] == null
-        ? null
-        : Team.fromJson(json['team'] as Map<String, dynamic>),
-    teamSeasonCoverage: json['team_season_coverage'] == null
-        ? null
-        : TeamSeasonCoverage.fromJson(
-            json['team_season_coverage'] as Map<String, dynamic>),
-    teamStatistics: json['team_statistics'] == null
-        ? null
-        : TeamStatistics.fromJson(
-            json['team_statistics'] as Map<String, dynamic>),
-    playerStatistics: (json['player_statistics'] as List)
-        ?.map((e) => e == null
-            ? null
-            : PlayerStatistics.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    goaltimeStatistics: json['goaltime_statistics'] == null
-        ? null
-        : GoaltimeStatistics.fromJson(
-            json['goaltime_statistics'] as Map<String, dynamic>),
-  );
+  return $checkedNew('Data', json, () {
+    final val = Data(
+      generatedAt: $checkedConvert(json, 'generated_at', (v) => v as String),
+      schema: $checkedConvert(json, 'schema', (v) => v as String),
+      tournament: $checkedConvert(
+          json,
+          'tournament',
+          (v) => v == null
+              ? null
+              : Tournament.fromJson(v as Map<String, dynamic>)),
+      team: $checkedConvert(json, 'team',
+          (v) => v == null ? null : Team.fromJson(v as Map<String, dynamic>)),
+      teamSeasonCoverage: $checkedConvert(
+          json,
+          'team_season_coverage',
+          (v) => v == null
+              ? null
+              : TeamSeasonCoverage.fromJson(v as Map<String, dynamic>)),
+      teamStatistics: $checkedConvert(
+          json,
+          'team_statistics',
+          (v) => v == null
+              ? null
+              : TeamStatistics.fromJson(v as Map<String, dynamic>)),
+      playerStatistics: $checkedConvert(
+          json,
+          'player_statistics',
+          (v) => (v as List)
+              ?.map((e) => e == null
+                  ? null
+                  : PlayerStatistics.fromJson(e as Map<String, dynamic>))
+              ?.toList()),
+      goaltimeStatistics: $checkedConvert(
+          json,
+          'goaltime_statistics',
+          (v) => v == null
+              ? null
+              : GoaltimeStatistics.fromJson(v as Map<String, dynamic>)),
+    );
+    return val;
+  }, fieldKeyMap: const {
+    'generatedAt': 'generated_at',
+    'teamSeasonCoverage': 'team_season_coverage',
+    'teamStatistics': 'team_statistics',
+    'playerStatistics': 'player_statistics',
+    'goaltimeStatistics': 'goaltime_statistics'
+  });
 }
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
@@ -48,20 +68,23 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
     };
 
 Tournament _$TournamentFromJson(Map<String, dynamic> json) {
-  return Tournament(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    sport: json['sport'] == null
-        ? null
-        : Sport.fromJson(json['sport'] as Map<String, dynamic>),
-    category: json['category'] == null
-        ? null
-        : Sport.fromJson(json['category'] as Map<String, dynamic>),
-    currentSeason: json['current_season'] == null
-        ? null
-        : CurrentSeason.fromJson(
-            json['current_season'] as Map<String, dynamic>),
-  );
+  return $checkedNew('Tournament', json, () {
+    final val = Tournament(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      sport: $checkedConvert(json, 'sport',
+          (v) => v == null ? null : Sport.fromJson(v as Map<String, dynamic>)),
+      category: $checkedConvert(json, 'category',
+          (v) => v == null ? null : Sport.fromJson(v as Map<String, dynamic>)),
+      currentSeason: $checkedConvert(
+          json,
+          'current_season',
+          (v) => v == null
+              ? null
+              : CurrentSeason.fromJson(v as Map<String, dynamic>)),
+    );
+    return val;
+  }, fieldKeyMap: const {'currentSeason': 'current_season'});
 }
 
 Map<String, dynamic> _$TournamentToJson(Tournament instance) =>
@@ -74,10 +97,13 @@ Map<String, dynamic> _$TournamentToJson(Tournament instance) =>
     };
 
 Sport _$SportFromJson(Map<String, dynamic> json) {
-  return Sport(
-    id: json['id'] as String,
-    name: json['name'] as String,
-  );
+  return $checkedNew('Sport', json, () {
+    final val = Sport(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$SportToJson(Sport instance) => <String, dynamic>{
@@ -86,13 +112,16 @@ Map<String, dynamic> _$SportToJson(Sport instance) => <String, dynamic>{
     };
 
 CurrentSeason _$CurrentSeasonFromJson(Map<String, dynamic> json) {
-  return CurrentSeason(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    startDate: json['start_date'] as String,
-    endDate: json['end_date'] as String,
-    year: json['year'] as String,
-  );
+  return $checkedNew('CurrentSeason', json, () {
+    final val = CurrentSeason(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      startDate: $checkedConvert(json, 'start_date', (v) => v as String),
+      endDate: $checkedConvert(json, 'end_date', (v) => v as String),
+      year: $checkedConvert(json, 'year', (v) => v as String),
+    );
+    return val;
+  }, fieldKeyMap: const {'startDate': 'start_date', 'endDate': 'end_date'});
 }
 
 Map<String, dynamic> _$CurrentSeasonToJson(CurrentSeason instance) =>
@@ -105,19 +134,20 @@ Map<String, dynamic> _$CurrentSeasonToJson(CurrentSeason instance) =>
     };
 
 Team _$TeamFromJson(Map<String, dynamic> json) {
-  return Team(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    country: json['country'] as String,
-    countryCode: json['country_code'] as String,
-    sport: json['sport'] == null
-        ? null
-        : Sport.fromJson(json['sport'] as Map<String, dynamic>),
-    category: json['category'] == null
-        ? null
-        : Sport.fromJson(json['category'] as Map<String, dynamic>),
-    abbreviation: json['abbreviation'] as String,
-  );
+  return $checkedNew('Team', json, () {
+    final val = Team(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      country: $checkedConvert(json, 'country', (v) => v as String),
+      countryCode: $checkedConvert(json, 'country_code', (v) => v as String),
+      sport: $checkedConvert(json, 'sport',
+          (v) => v == null ? null : Sport.fromJson(v as Map<String, dynamic>)),
+      category: $checkedConvert(json, 'category',
+          (v) => v == null ? null : Sport.fromJson(v as Map<String, dynamic>)),
+      abbreviation: $checkedConvert(json, 'abbreviation', (v) => v as String),
+    );
+    return val;
+  }, fieldKeyMap: const {'countryCode': 'country_code'});
 }
 
 Map<String, dynamic> _$TeamToJson(Team instance) => <String, dynamic>{
@@ -131,11 +161,14 @@ Map<String, dynamic> _$TeamToJson(Team instance) => <String, dynamic>{
     };
 
 Category _$CategoryFromJson(Map<String, dynamic> json) {
-  return Category(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    countryCode: json['country_code'] as String,
-  );
+  return $checkedNew('Category', json, () {
+    final val = Category(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      countryCode: $checkedConvert(json, 'country_code', (v) => v as String),
+    );
+    return val;
+  }, fieldKeyMap: const {'countryCode': 'country_code'});
 }
 
 Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
@@ -145,12 +178,15 @@ Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
     };
 
 TeamSeasonCoverage _$TeamSeasonCoverageFromJson(Map<String, dynamic> json) {
-  return TeamSeasonCoverage(
-    scheduled: json['scheduled'] as int,
-    played: json['played'] as int,
-    platinum: json['platinum'] as int,
-    gold: json['gold'] as int,
-  );
+  return $checkedNew('TeamSeasonCoverage', json, () {
+    final val = TeamSeasonCoverage(
+      scheduled: $checkedConvert(json, 'scheduled', (v) => v as int),
+      played: $checkedConvert(json, 'played', (v) => v as int),
+      platinum: $checkedConvert(json, 'platinum', (v) => v as int),
+      gold: $checkedConvert(json, 'gold', (v) => v as int),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$TeamSeasonCoverageToJson(TeamSeasonCoverage instance) =>
@@ -162,51 +198,107 @@ Map<String, dynamic> _$TeamSeasonCoverageToJson(TeamSeasonCoverage instance) =>
     };
 
 TeamStatistics _$TeamStatisticsFromJson(Map<String, dynamic> json) {
-  return TeamStatistics(
-    matchesPlayed: json['matches_played'] as int,
-    matchesWon: json['matches_won'] as int,
-    form: json['form'] as String,
-    goalAttempts: json['goal_attempts'] == null
-        ? null
-        : GoalAttempts.fromJson(json['goal_attempts'] as Map<String, dynamic>),
-    shotsOnGoal: json['shots_on_goal'] == null
-        ? null
-        : GoalAttempts.fromJson(json['shots_on_goal'] as Map<String, dynamic>),
-    shotsOffGoal: json['shots_off_goal'] == null
-        ? null
-        : GoalAttempts.fromJson(json['shots_off_goal'] as Map<String, dynamic>),
-    cornerKicks: json['corner_kicks'] == null
-        ? null
-        : GoalAttempts.fromJson(json['corner_kicks'] as Map<String, dynamic>),
-    ballPossession: json['ball_possession'] == null
-        ? null
-        : GoalAttempts.fromJson(
-            json['ball_possession'] as Map<String, dynamic>),
-    shotsBlocked: json['shots_blocked'] == null
-        ? null
-        : GoalAttempts.fromJson(json['shots_blocked'] as Map<String, dynamic>),
-    cardsGiven: json['cards_given'] == null
-        ? null
-        : GoalAttempts.fromJson(json['cards_given'] as Map<String, dynamic>),
-    freeKicks: json['free_kicks'] == null
-        ? null
-        : GoalAttempts.fromJson(json['free_kicks'] as Map<String, dynamic>),
-    offsides: json['offsides'] == null
-        ? null
-        : GoalAttempts.fromJson(json['offsides'] as Map<String, dynamic>),
-    shotsOnBar: json['shots_on_bar'] == null
-        ? null
-        : GoalAttempts.fromJson(json['shots_on_bar'] as Map<String, dynamic>),
-    goalsByFoot: json['goals_by_foot'] == null
-        ? null
-        : GoalAttempts.fromJson(json['goals_by_foot'] as Map<String, dynamic>),
-    goalsScored: json['goals_scored'] == null
-        ? null
-        : GoalAttempts.fromJson(json['goals_scored'] as Map<String, dynamic>),
-    goalsConceded: json['goals_conceded'] == null
-        ? null
-        : GoalAttempts.fromJson(json['goals_conceded'] as Map<String, dynamic>),
-  );
+  return $checkedNew('TeamStatistics', json, () {
+    final val = TeamStatistics(
+      matchesPlayed: $checkedConvert(json, 'matches_played', (v) => v as int),
+      matchesWon: $checkedConvert(json, 'matches_won', (v) => v as int),
+      form: $checkedConvert(json, 'form', (v) => v as String),
+      goalAttempts: $checkedConvert(
+          json,
+          'goal_attempts',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      shotsOnGoal: $checkedConvert(
+          json,
+          'shots_on_goal',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      shotsOffGoal: $checkedConvert(
+          json,
+          'shots_off_goal',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      cornerKicks: $checkedConvert(
+          json,
+          'corner_kicks',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      ballPossession: $checkedConvert(
+          json,
+          'ball_possession',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      shotsBlocked: $checkedConvert(
+          json,
+          'shots_blocked',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      cardsGiven: $checkedConvert(
+          json,
+          'cards_given',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      freeKicks: $checkedConvert(
+          json,
+          'free_kicks',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      offsides: $checkedConvert(
+          json,
+          'offsides',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      shotsOnBar: $checkedConvert(
+          json,
+          'shots_on_bar',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      goalsByFoot: $checkedConvert(
+          json,
+          'goals_by_foot',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      goalsScored: $checkedConvert(
+          json,
+          'goals_scored',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      goalsConceded: $checkedConvert(
+          json,
+          'goals_conceded',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+    );
+    return val;
+  }, fieldKeyMap: const {
+    'matchesPlayed': 'matches_played',
+    'matchesWon': 'matches_won',
+    'goalAttempts': 'goal_attempts',
+    'shotsOnGoal': 'shots_on_goal',
+    'shotsOffGoal': 'shots_off_goal',
+    'cornerKicks': 'corner_kicks',
+    'ballPossession': 'ball_possession',
+    'shotsBlocked': 'shots_blocked',
+    'cardsGiven': 'cards_given',
+    'freeKicks': 'free_kicks',
+    'shotsOnBar': 'shots_on_bar',
+    'goalsByFoot': 'goals_by_foot',
+    'goalsScored': 'goals_scored',
+    'goalsConceded': 'goals_conceded'
+  });
 }
 
 Map<String, dynamic> _$TeamStatisticsToJson(TeamStatistics instance) =>
@@ -230,10 +322,13 @@ Map<String, dynamic> _$TeamStatisticsToJson(TeamStatistics instance) =>
     };
 
 GoalAttempts _$GoalAttemptsFromJson(Map<String, dynamic> json) {
-  return GoalAttempts(
-    total: json['total'] as int,
-    matches: json['matches'] as int,
-  );
+  return $checkedNew('GoalAttempts', json, () {
+    final val = GoalAttempts(
+      total: $checkedConvert(json, 'total', (v) => v as int),
+      matches: $checkedConvert(json, 'matches', (v) => v as int),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$GoalAttemptsToJson(GoalAttempts instance) =>
@@ -243,15 +338,24 @@ Map<String, dynamic> _$GoalAttemptsToJson(GoalAttempts instance) =>
     };
 
 PlayerStatistics _$PlayerStatisticsFromJson(Map<String, dynamic> json) {
-  return PlayerStatistics(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    matchesPlayed: json['matches_played'] as int,
-    statistics: json['statistics'] == null
-        ? null
-        : Statistics.fromJson(json['statistics'] as Map<String, dynamic>),
-    minutesPlayed: json['minutes_played'] as int,
-  );
+  return $checkedNew('PlayerStatistics', json, () {
+    final val = PlayerStatistics(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      matchesPlayed: $checkedConvert(json, 'matches_played', (v) => v as int),
+      statistics: $checkedConvert(
+          json,
+          'statistics',
+          (v) => v == null
+              ? null
+              : Statistics.fromJson(v as Map<String, dynamic>)),
+      minutesPlayed: $checkedConvert(json, 'minutes_played', (v) => v as int),
+    );
+    return val;
+  }, fieldKeyMap: const {
+    'matchesPlayed': 'matches_played',
+    'minutesPlayed': 'minutes_played'
+  });
 }
 
 Map<String, dynamic> _$PlayerStatisticsToJson(PlayerStatistics instance) =>
@@ -264,42 +368,87 @@ Map<String, dynamic> _$PlayerStatisticsToJson(PlayerStatistics instance) =>
     };
 
 Statistics _$StatisticsFromJson(Map<String, dynamic> json) {
-  return Statistics(
-    goalsScored: json['goals_scored'] == null
-        ? null
-        : GoalAttempts.fromJson(json['goals_scored'] as Map<String, dynamic>),
-    shotsOnGoal: json['shots_on_goal'] == null
-        ? null
-        : GoalAttempts.fromJson(json['shots_on_goal'] as Map<String, dynamic>),
-    substitutedOut: json['substituted_out'] == null
-        ? null
-        : GoalAttempts.fromJson(
-            json['substituted_out'] as Map<String, dynamic>),
-    goalAttempts: json['goal_attempts'] == null
-        ? null
-        : GoalAttempts.fromJson(json['goal_attempts'] as Map<String, dynamic>),
-    offsides: json['offsides'] == null
-        ? null
-        : GoalAttempts.fromJson(json['offsides'] as Map<String, dynamic>),
-    cardsGiven: json['cards_given'] == null
-        ? null
-        : GoalAttempts.fromJson(json['cards_given'] as Map<String, dynamic>),
-    shotsOffGoal: json['shots_off_goal'] == null
-        ? null
-        : GoalAttempts.fromJson(json['shots_off_goal'] as Map<String, dynamic>),
-    substitutedIn: json['substituted_in'] == null
-        ? null
-        : GoalAttempts.fromJson(json['substituted_in'] as Map<String, dynamic>),
-    shotsBlocked: json['shots_blocked'] == null
-        ? null
-        : GoalAttempts.fromJson(json['shots_blocked'] as Map<String, dynamic>),
-    cornerKicks: json['corner_kicks'] == null
-        ? null
-        : GoalAttempts.fromJson(json['corner_kicks'] as Map<String, dynamic>),
-    assists: json['assists'] == null
-        ? null
-        : GoalAttempts.fromJson(json['assists'] as Map<String, dynamic>),
-  );
+  return $checkedNew('Statistics', json, () {
+    final val = Statistics(
+      goalsScored: $checkedConvert(
+          json,
+          'goals_scored',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      shotsOnGoal: $checkedConvert(
+          json,
+          'shots_on_goal',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      substitutedOut: $checkedConvert(
+          json,
+          'substituted_out',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      goalAttempts: $checkedConvert(
+          json,
+          'goal_attempts',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      offsides: $checkedConvert(
+          json,
+          'offsides',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      cardsGiven: $checkedConvert(
+          json,
+          'cards_given',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      shotsOffGoal: $checkedConvert(
+          json,
+          'shots_off_goal',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      substitutedIn: $checkedConvert(
+          json,
+          'substituted_in',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      shotsBlocked: $checkedConvert(
+          json,
+          'shots_blocked',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      cornerKicks: $checkedConvert(
+          json,
+          'corner_kicks',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+      assists: $checkedConvert(
+          json,
+          'assists',
+          (v) => v == null
+              ? null
+              : GoalAttempts.fromJson(v as Map<String, dynamic>)),
+    );
+    return val;
+  }, fieldKeyMap: const {
+    'goalsScored': 'goals_scored',
+    'shotsOnGoal': 'shots_on_goal',
+    'substitutedOut': 'substituted_out',
+    'goalAttempts': 'goal_attempts',
+    'cardsGiven': 'cards_given',
+    'shotsOffGoal': 'shots_off_goal',
+    'substitutedIn': 'substituted_in',
+    'shotsBlocked': 'shots_blocked',
+    'cornerKicks': 'corner_kicks'
+  });
 }
 
 Map<String, dynamic> _$StatisticsToJson(Statistics instance) =>
@@ -318,14 +467,15 @@ Map<String, dynamic> _$StatisticsToJson(Statistics instance) =>
     };
 
 GoaltimeStatistics _$GoaltimeStatisticsFromJson(Map<String, dynamic> json) {
-  return GoaltimeStatistics(
-    scored: json['scored'] == null
-        ? null
-        : Scored.fromJson(json['scored'] as Map<String, dynamic>),
-    conceded: json['conceded'] == null
-        ? null
-        : Scored.fromJson(json['conceded'] as Map<String, dynamic>),
-  );
+  return $checkedNew('GoaltimeStatistics', json, () {
+    final val = GoaltimeStatistics(
+      scored: $checkedConvert(json, 'scored',
+          (v) => v == null ? null : Scored.fromJson(v as Map<String, dynamic>)),
+      conceded: $checkedConvert(json, 'conceded',
+          (v) => v == null ? null : Scored.fromJson(v as Map<String, dynamic>)),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$GoaltimeStatisticsToJson(GoaltimeStatistics instance) =>
@@ -335,13 +485,19 @@ Map<String, dynamic> _$GoaltimeStatisticsToJson(GoaltimeStatistics instance) =>
     };
 
 Scored _$ScoredFromJson(Map<String, dynamic> json) {
-  return Scored(
-    total: json['total'] as int,
-    period: (json['period'] as List)
-        ?.map((e) =>
-            e == null ? null : Period.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
+  return $checkedNew('Scored', json, () {
+    final val = Scored(
+      total: $checkedConvert(json, 'total', (v) => v as int),
+      period: $checkedConvert(
+          json,
+          'period',
+          (v) => (v as List)
+              ?.map((e) =>
+                  e == null ? null : Period.fromJson(e as Map<String, dynamic>))
+              ?.toList()),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$ScoredToJson(Scored instance) => <String, dynamic>{
@@ -350,10 +506,13 @@ Map<String, dynamic> _$ScoredToJson(Scored instance) => <String, dynamic>{
     };
 
 Period _$PeriodFromJson(Map<String, dynamic> json) {
-  return Period(
-    name: json['name'] as String,
-    value: json['value'] as int,
-  );
+  return $checkedNew('Period', json, () {
+    final val = Period(
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      value: $checkedConvert(json, 'value', (v) => v as int),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$PeriodToJson(Period instance) => <String, dynamic>{

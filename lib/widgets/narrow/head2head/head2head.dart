@@ -23,7 +23,7 @@ class Head2Head extends StatelessWidget {
           (BuildContext context, AsyncSnapshot<head_2_head.Data> snapshot) {
         if (snapshot.hasError) {
           if (snapshot.error is AppBusy) {
-            return const BusyWidget(child: _Head2Head());
+            return const BusyWidget(child: const _Head2Head());
           }
 
           return FailWidget(
@@ -40,7 +40,7 @@ class Head2Head extends StatelessWidget {
           return _Head2Head(data: snapshot.data);
         }
 
-        return _Head2Head();
+        return const _Head2Head();
       },
     );
   }
@@ -60,6 +60,6 @@ class _Head2Head extends StatelessWidget {
       return const Center();
     }
 
-    return Center();
+    return const Center();
   }
 }

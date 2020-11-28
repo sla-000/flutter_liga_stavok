@@ -31,6 +31,7 @@ class LastMeetings {
   });
 
   final List<Result> results;
+
   factory LastMeetings.fromJson(Map<String, dynamic> json) =>
       _$LastMeetingsFromJson(json);
 

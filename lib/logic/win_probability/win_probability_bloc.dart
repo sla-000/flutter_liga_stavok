@@ -25,12 +25,16 @@ class WinProbabilityBloc extends SubscribeBloc<daily_schedule.SportEvent,
         return;
       }
 
-      addError(LoadingAppBusy());
+      try {
+        addError(LoadingAppBusy());
 
-      final match_probabilities.Data data =
-          await getMatchProbabilities(sportEvent.id);
+        final match_probabilities.Data data =
+            await getMatchProbabilities(sportEvent.id);
 
-      add(data.probabilities);
+        add(data.probabilities);
+      } on Exception catch (error) {
+        addError(error);
+      }
     }, onError: (Object error) {
       _log.finest(() => 'subscribe: error=$error');
       clear();

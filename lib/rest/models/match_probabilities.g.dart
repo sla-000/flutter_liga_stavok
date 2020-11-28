@@ -7,18 +7,29 @@ part of 'match_probabilities.dart';
 // **************************************************************************
 
 Data _$DataFromJson(Map<String, dynamic> json) {
-  return Data(
-    generatedAt: json['generated_at'] == null
-        ? null
-        : DateTime.parse(json['generated_at'] as String),
-    schema: json['schema'] as String,
-    sportEvent: json['sport_event'] == null
-        ? null
-        : SportEvent.fromJson(json['sport_event'] as Map<String, dynamic>),
-    probabilities: json['probabilities'] == null
-        ? null
-        : Probabilities.fromJson(json['probabilities'] as Map<String, dynamic>),
-  );
+  return $checkedNew('Data', json, () {
+    final val = Data(
+      generatedAt: $checkedConvert(json, 'generated_at',
+          (v) => v == null ? null : DateTime.parse(v as String)),
+      schema: $checkedConvert(json, 'schema', (v) => v as String),
+      sportEvent: $checkedConvert(
+          json,
+          'sport_event',
+          (v) => v == null
+              ? null
+              : SportEvent.fromJson(v as Map<String, dynamic>)),
+      probabilities: $checkedConvert(
+          json,
+          'probabilities',
+          (v) => v == null
+              ? null
+              : Probabilities.fromJson(v as Map<String, dynamic>)),
+    );
+    return val;
+  }, fieldKeyMap: const {
+    'generatedAt': 'generated_at',
+    'sportEvent': 'sport_event'
+  });
 }
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
@@ -29,12 +40,18 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
     };
 
 Probabilities _$ProbabilitiesFromJson(Map<String, dynamic> json) {
-  return Probabilities(
-    markets: (json['markets'] as List)
-        ?.map((e) =>
-            e == null ? null : Market.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
+  return $checkedNew('Probabilities', json, () {
+    final val = Probabilities(
+      markets: $checkedConvert(
+          json,
+          'markets',
+          (v) => (v as List)
+              ?.map((e) =>
+                  e == null ? null : Market.fromJson(e as Map<String, dynamic>))
+              ?.toList()),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$ProbabilitiesToJson(Probabilities instance) =>
@@ -43,13 +60,20 @@ Map<String, dynamic> _$ProbabilitiesToJson(Probabilities instance) =>
     };
 
 Market _$MarketFromJson(Map<String, dynamic> json) {
-  return Market(
-    name: json['name'] as String,
-    outcomes: (json['outcomes'] as List)
-        ?.map((e) =>
-            e == null ? null : Outcome.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
+  return $checkedNew('Market', json, () {
+    final val = Market(
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      outcomes: $checkedConvert(
+          json,
+          'outcomes',
+          (v) => (v as List)
+              ?.map((e) => e == null
+                  ? null
+                  : Outcome.fromJson(e as Map<String, dynamic>))
+              ?.toList()),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$MarketToJson(Market instance) => <String, dynamic>{
@@ -58,10 +82,14 @@ Map<String, dynamic> _$MarketToJson(Market instance) => <String, dynamic>{
     };
 
 Outcome _$OutcomeFromJson(Map<String, dynamic> json) {
-  return Outcome(
-    name: json['name'] as String,
-    probability: (json['probability'] as num)?.toDouble(),
-  );
+  return $checkedNew('Outcome', json, () {
+    final val = Outcome(
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      probability:
+          $checkedConvert(json, 'probability', (v) => (v as num)?.toDouble()),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$OutcomeToJson(Outcome instance) => <String, dynamic>{
@@ -70,27 +98,40 @@ Map<String, dynamic> _$OutcomeToJson(Outcome instance) => <String, dynamic>{
     };
 
 SportEvent _$SportEventFromJson(Map<String, dynamic> json) {
-  return SportEvent(
-    id: json['id'] as String,
-    scheduled: json['scheduled'] == null
-        ? null
-        : DateTime.parse(json['scheduled'] as String),
-    startTimeTbd: json['start_time_tbd'] as bool,
-    tournamentRound: json['tournament_round'] == null
-        ? null
-        : TournamentRound.fromJson(
-            json['tournament_round'] as Map<String, dynamic>),
-    season: json['season'] == null
-        ? null
-        : Season.fromJson(json['season'] as Map<String, dynamic>),
-    tournament: json['tournament'] == null
-        ? null
-        : Tournament.fromJson(json['tournament'] as Map<String, dynamic>),
-    competitors: (json['competitors'] as List)
-        ?.map((e) =>
-            e == null ? null : Competitor.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
+  return $checkedNew('SportEvent', json, () {
+    final val = SportEvent(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      scheduled: $checkedConvert(json, 'scheduled',
+          (v) => v == null ? null : DateTime.parse(v as String)),
+      startTimeTbd: $checkedConvert(json, 'start_time_tbd', (v) => v as bool),
+      tournamentRound: $checkedConvert(
+          json,
+          'tournament_round',
+          (v) => v == null
+              ? null
+              : TournamentRound.fromJson(v as Map<String, dynamic>)),
+      season: $checkedConvert(json, 'season',
+          (v) => v == null ? null : Season.fromJson(v as Map<String, dynamic>)),
+      tournament: $checkedConvert(
+          json,
+          'tournament',
+          (v) => v == null
+              ? null
+              : Tournament.fromJson(v as Map<String, dynamic>)),
+      competitors: $checkedConvert(
+          json,
+          'competitors',
+          (v) => (v as List)
+              ?.map((e) => e == null
+                  ? null
+                  : Competitor.fromJson(e as Map<String, dynamic>))
+              ?.toList()),
+    );
+    return val;
+  }, fieldKeyMap: const {
+    'startTimeTbd': 'start_time_tbd',
+    'tournamentRound': 'tournament_round'
+  });
 }
 
 Map<String, dynamic> _$SportEventToJson(SportEvent instance) =>
@@ -105,14 +146,17 @@ Map<String, dynamic> _$SportEventToJson(SportEvent instance) =>
     };
 
 Competitor _$CompetitorFromJson(Map<String, dynamic> json) {
-  return Competitor(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    country: json['country'] as String,
-    countryCode: json['country_code'] as String,
-    abbreviation: json['abbreviation'] as String,
-    qualifier: json['qualifier'] as String,
-  );
+  return $checkedNew('Competitor', json, () {
+    final val = Competitor(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      country: $checkedConvert(json, 'country', (v) => v as String),
+      countryCode: $checkedConvert(json, 'country_code', (v) => v as String),
+      abbreviation: $checkedConvert(json, 'abbreviation', (v) => v as String),
+      qualifier: $checkedConvert(json, 'qualifier', (v) => v as String),
+    );
+    return val;
+  }, fieldKeyMap: const {'countryCode': 'country_code'});
 }
 
 Map<String, dynamic> _$CompetitorToJson(Competitor instance) =>
@@ -126,18 +170,23 @@ Map<String, dynamic> _$CompetitorToJson(Competitor instance) =>
     };
 
 Season _$SeasonFromJson(Map<String, dynamic> json) {
-  return Season(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    startDate: json['start_date'] == null
-        ? null
-        : DateTime.parse(json['start_date'] as String),
-    endDate: json['end_date'] == null
-        ? null
-        : DateTime.parse(json['end_date'] as String),
-    year: json['year'] as String,
-    tournamentId: json['tournament_id'] as String,
-  );
+  return $checkedNew('Season', json, () {
+    final val = Season(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      startDate: $checkedConvert(json, 'start_date',
+          (v) => v == null ? null : DateTime.parse(v as String)),
+      endDate: $checkedConvert(json, 'end_date',
+          (v) => v == null ? null : DateTime.parse(v as String)),
+      year: $checkedConvert(json, 'year', (v) => v as String),
+      tournamentId: $checkedConvert(json, 'tournament_id', (v) => v as String),
+    );
+    return val;
+  }, fieldKeyMap: const {
+    'startDate': 'start_date',
+    'endDate': 'end_date',
+    'tournamentId': 'tournament_id'
+  });
 }
 
 Map<String, dynamic> _$SeasonToJson(Season instance) => <String, dynamic>{
@@ -150,16 +199,23 @@ Map<String, dynamic> _$SeasonToJson(Season instance) => <String, dynamic>{
     };
 
 Tournament _$TournamentFromJson(Map<String, dynamic> json) {
-  return Tournament(
-    id: json['id'] as String,
-    name: json['name'] as String,
-    sport: json['sport'] == null
-        ? null
-        : Category.fromJson(json['sport'] as Map<String, dynamic>),
-    category: json['category'] == null
-        ? null
-        : Category.fromJson(json['category'] as Map<String, dynamic>),
-  );
+  return $checkedNew('Tournament', json, () {
+    final val = Tournament(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+      sport: $checkedConvert(
+          json,
+          'sport',
+          (v) =>
+              v == null ? null : Category.fromJson(v as Map<String, dynamic>)),
+      category: $checkedConvert(
+          json,
+          'category',
+          (v) =>
+              v == null ? null : Category.fromJson(v as Map<String, dynamic>)),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$TournamentToJson(Tournament instance) =>
@@ -171,10 +227,13 @@ Map<String, dynamic> _$TournamentToJson(Tournament instance) =>
     };
 
 Category _$CategoryFromJson(Map<String, dynamic> json) {
-  return Category(
-    id: json['id'] as String,
-    name: json['name'] as String,
-  );
+  return $checkedNew('Category', json, () {
+    final val = Category(
+      id: $checkedConvert(json, 'id', (v) => v as String),
+      name: $checkedConvert(json, 'name', (v) => v as String),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
@@ -183,10 +242,13 @@ Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
     };
 
 TournamentRound _$TournamentRoundFromJson(Map<String, dynamic> json) {
-  return TournamentRound(
-    type: json['type'] as String,
-    number: json['number'] as int,
-  );
+  return $checkedNew('TournamentRound', json, () {
+    final val = TournamentRound(
+      type: $checkedConvert(json, 'type', (v) => v as String),
+      number: $checkedConvert(json, 'number', (v) => v as int),
+    );
+    return val;
+  });
 }
 
 Map<String, dynamic> _$TournamentRoundToJson(TournamentRound instance) =>

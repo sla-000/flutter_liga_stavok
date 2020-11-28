@@ -25,12 +25,16 @@ class Head2HeadBloc
         return;
       }
 
-      addError(LoadingAppBusy());
+      try {
+        addError(LoadingAppBusy());
 
-      final head_2_head.Data data = await getHead2Head(
-          sportEvent.competitors[0].id, sportEvent.competitors[1].id);
+        final head_2_head.Data data = await getHead2Head(
+            sportEvent.competitors[0].id, sportEvent.competitors[1].id);
 
-      add(data);
+        add(data);
+      } on Exception catch (error) {
+        addError(error);
+      }
     }, onError: (Object error) {
       _log.finest(() => 'subscribe: error=$error');
       clear();
