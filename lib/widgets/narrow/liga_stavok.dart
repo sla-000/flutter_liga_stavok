@@ -21,8 +21,21 @@ class LigaStavokNarrow extends StatelessWidget {
           children: const <Widget>[
             Text('LigaStavokNarrow'),
             SizedBox(height: 8),
-            Probabilities(),
-            Head2Head(),
+            Card(
+              elevation: kCardElevation,
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Probabilities(),
+              ),
+            ),
+            SizedBox(height: 8),
+            Card(
+              elevation: kCardElevation,
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Head2Head(),
+              ),
+            ),
           ],
         ),
       ),

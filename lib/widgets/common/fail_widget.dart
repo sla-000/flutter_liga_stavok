@@ -22,6 +22,7 @@ class FailWidget extends StatelessWidget {
             child: InkWell(
               onTap: onTap,
               child: Tooltip(
+                showDuration: const Duration(seconds: 5),
                 message: error,
                 child: Icon(
                   onTap == null ? Icons.warning : Icons.refresh,

@@ -29,7 +29,7 @@ class Probabilities extends StatelessWidget {
 
           return FailWidget(
             error: snapshot.error.toString(),
-            child: _Probabilities(),
+            child: const _Probabilities(),
             onTap: () {
               _log.info(() => 'build: onTap: error=${snapshot.error}');
               getIt.get<WinProbabilityBloc>().resubscribe();
@@ -38,10 +38,13 @@ class Probabilities extends StatelessWidget {
         }
 
         if (snapshot.hasData) {
-          return _Probabilities(probabilities: snapshot.data);
+          return _Probabilities(
+            key: ValueKey<int>(snapshot.data.hashCode),
+            probabilities: snapshot.data,
+          );
         }
 
-        return _Probabilities();
+        return const _Probabilities();
       },
     );
   }

@@ -6,6 +6,7 @@ import 'package:flutter_liga_stavok/rest/models/head_2_head.dart'
 import 'package:flutter_liga_stavok/utils/exception.dart';
 import 'package:flutter_liga_stavok/widgets/common/busy_widget.dart';
 import 'package:flutter_liga_stavok/widgets/common/fail_widget.dart';
+import 'package:flutter_liga_stavok/widgets/narrow/head2head/last_meetings/last_meetings.dart';
 import 'package:logging/logging.dart';
 
 final Logger _log = Logger('Head2Head');
@@ -38,7 +39,10 @@ class Head2Head extends StatelessWidget {
 
         if (snapshot.hasData) {
           _log.finest(() => 'build: data=${snapshot.data}');
-          return _Head2Head(data: snapshot.data);
+          return _Head2Head(
+            key: ValueKey<int>(snapshot.data.hashCode),
+            data: snapshot.data,
+          );
         }
 
         return const _Head2Head();
@@ -61,6 +65,16 @@ class _Head2Head extends StatelessWidget {
       return const Center();
     }
 
-    return const Center();
+    // data.lastMeetings.results[0].sportEvent.competitors[0].
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        LastMeetings(
+          results: data.lastMeetings.results,
+        ),
+      ],
+    );
   }
 }

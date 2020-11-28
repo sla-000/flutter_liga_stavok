@@ -33,6 +33,7 @@ class WinProbabilityBloc extends SubscribeBloc<daily_schedule.SportEvent,
 
         add(data.probabilities);
       } on Exception catch (error) {
+        _log.warning(() => 'subscribe: error=$error');
         addError(error);
       }
     }, onError: (Object error) {

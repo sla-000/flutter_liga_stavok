@@ -33,6 +33,7 @@ class Head2HeadBloc
 
         add(data);
       } on Exception catch (error) {
+        _log.warning(() => 'subscribe: error=$error');
         addError(error);
       }
     }, onError: (Object error) {
