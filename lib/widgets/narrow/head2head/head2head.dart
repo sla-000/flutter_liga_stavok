@@ -65,16 +65,8 @@ class _Head2Head extends StatelessWidget {
       return const Center();
     }
 
-    // data.lastMeetings.results[0].sportEvent.competitors[0].
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        LastMeetings(
-          results: data.lastMeetings.results,
-        ),
-      ],
+    return LastMeetings(
+      results: data.lastMeetings.results,
     );
   }
 }
