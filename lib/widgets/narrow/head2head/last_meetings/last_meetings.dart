@@ -28,6 +28,7 @@ class LastMeetings extends StatelessWidget {
 
   List<Widget> _getChildren() {
     return results
+        .take(5)
         .map((Result result) => _getChild(result))
         .toList(growable: false);
   }

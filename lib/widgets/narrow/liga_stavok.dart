@@ -7,6 +7,7 @@ import 'package:flutter_liga_stavok/widgets/narrow/fun_facts/fun_facts.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/head2head/head2head.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/live_results/live_results.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/probability/probabilities.dart';
+import 'package:flutter_liga_stavok/widgets/narrow/team_profile/team_profile.dart';
 
 class LigaStavokNarrow extends StatelessWidget {
   const LigaStavokNarrow({
@@ -43,6 +44,16 @@ class LigaStavokNarrow extends StatelessWidget {
               CardWrapper(
                 label: 'FunFacts',
                 child: FunFacts(),
+              ),
+              SizedBox(height: 8),
+              CardWrapper(
+                label: 'TeamProfileHome',
+                child: TeamProfileHome(),
+              ),
+              SizedBox(height: 8),
+              CardWrapper(
+                label: 'TeamProfileAway',
+                child: TeamProfileAway(),
               ),
             ],
           ),
