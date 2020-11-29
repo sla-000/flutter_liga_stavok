@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_liga_stavok/rest/models/common.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -27,6 +29,9 @@ class Data {
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
   Map<String, dynamic> toJson() => _$DataToJson(this);
+
+  @override
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
 @JsonSerializable()
@@ -42,6 +47,9 @@ class TeamSeasonCoverage {
       _$TeamSeasonCoverageFromJson(json);
 
   Map<String, dynamic> toJson() => _$TeamSeasonCoverageToJson(this);
+
+  @override
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
 @JsonSerializable()
@@ -85,6 +93,9 @@ class TeamStatistics {
       _$TeamStatisticsFromJson(json);
 
   Map<String, dynamic> toJson() => _$TeamStatisticsToJson(this);
+
+  @override
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
 @JsonSerializable()
@@ -98,6 +109,9 @@ class GoalAttempts {
       _$GoalAttemptsFromJson(json);
 
   Map<String, dynamic> toJson() => _$GoalAttemptsToJson(this);
+
+  @override
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
 @JsonSerializable()
@@ -119,6 +133,9 @@ class PlayerStatistics {
       _$PlayerStatisticsFromJson(json);
 
   Map<String, dynamic> toJson() => _$PlayerStatisticsToJson(this);
+
+  @override
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
 @JsonSerializable()
@@ -152,6 +169,9 @@ class Statistics {
       _$StatisticsFromJson(json);
 
   Map<String, dynamic> toJson() => _$StatisticsToJson(this);
+
+  @override
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
 @JsonSerializable()
@@ -165,6 +185,9 @@ class GoaltimeStatistics {
       _$GoaltimeStatisticsFromJson(json);
 
   Map<String, dynamic> toJson() => _$GoaltimeStatisticsToJson(this);
+
+  @override
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
 @JsonSerializable()
@@ -177,6 +200,9 @@ class Scored {
   factory Scored.fromJson(Map<String, dynamic> json) => _$ScoredFromJson(json);
 
   Map<String, dynamic> toJson() => _$ScoredToJson(this);
+
+  @override
+  String toString() => const JsonEncoder().convert(toJson());
 }
 
 @JsonSerializable()
@@ -189,4 +215,7 @@ class Period {
   factory Period.fromJson(Map<String, dynamic> json) => _$PeriodFromJson(json);
 
   Map<String, dynamic> toJson() => _$PeriodToJson(this);
+
+  @override
+  String toString() => const JsonEncoder().convert(toJson());
 }

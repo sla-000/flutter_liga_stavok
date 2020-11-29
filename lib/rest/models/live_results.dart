@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_liga_stavok/rest/models/common.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -20,5 +22,5 @@ class Data {
   Map<String, dynamic> toJson() => _$DataToJson(this);
 
   @override
-  String toString() => 'Data{${toJson()}}';
+  String toString() => const JsonEncoder().convert(toJson());
 }
