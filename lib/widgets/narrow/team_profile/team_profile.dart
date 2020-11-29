@@ -99,17 +99,46 @@ class _TeamProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (home == null) {
+    if (home == null || data?.jerseys == null) {
       return const Center();
     }
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        if ((data?.jerseys?.length ?? 0) >= 2)
-          Jersey(jersey: home ? data.jerseys[0] : data.jerseys[1]),
-      ],
-    );
+    final team_profile.Jersey jersey = _findJersey();
+
+    return JerseyLook(jersey: jersey);
+  }
+
+  team_profile.Jersey _findJersey() {
+    if (data.jerseys.isEmpty ?? true) {
+      return null;
+    }
+
+    if (home) {
+      final team_profile.Jersey rezJersey = data.jerseys.firstWhere(
+          (team_profile.Jersey _jersey) => _jersey?.type == 'home',
+          orElse: () => null);
+
+      if (rezJersey != null) {
+        return rezJersey;
+      }
+
+      return data.jerseys.firstWhere(
+          (team_profile.Jersey _jersey) => _jersey?.type == 'third',
+          orElse: () => null);
+    } else {
+      final team_profile.Jersey rezJersey = data.jerseys.firstWhere(
+          (team_profile.Jersey _jersey) => _jersey?.type == 'away',
+          orElse: () => null);
+
+      if (rezJersey != null) {
+        return rezJersey;
+      }
+
+      return data.jerseys.firstWhere(
+          (team_profile.Jersey _jersey) => _jersey?.type == 'third',
+          orElse: () => null);
+    }
+
+    return null;
   }
 }
