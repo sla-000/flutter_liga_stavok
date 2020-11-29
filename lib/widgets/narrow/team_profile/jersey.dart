@@ -40,7 +40,6 @@ class JerseyLook extends StatelessWidget {
         colors[0] = sleeveColor;
         colors[2] = sleeveColor;
         colors[5] = sleeveColor;
-        colors[6] = sleeveColor;
         colors[7] = sleeveColor;
       } else {
         colors[0] = sleeveColor;
