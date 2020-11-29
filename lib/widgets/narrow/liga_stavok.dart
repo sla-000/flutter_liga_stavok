@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/theme/elevations.dart';
 import 'package:flutter_liga_stavok/theme/paddings.dart';
 import 'package:flutter_liga_stavok/theme/physics.dart';
+import 'package:flutter_liga_stavok/widgets/narrow/card_wrapper.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/head2head/head2head.dart';
+import 'package:flutter_liga_stavok/widgets/narrow/live_results/live_results.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/probability/probabilities.dart';
 
 class LigaStavokNarrow extends StatelessWidget {
@@ -21,37 +23,20 @@ class LigaStavokNarrow extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Card(
-                elevation: kCardElevation,
-                child: Padding(
-                  padding: kCardPadding,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
-                      Text('MatchProbabilities'),
-                      SizedBox(height: 8),
-                      Probabilities(),
-                    ],
-                  ),
-                ),
+            children: const <Widget>[
+              CardWrapper(
+                label: 'LiveResults',
+                child: LiveResults(),
               ),
-              const SizedBox(height: 8),
-              Card(
-                elevation: kCardElevation,
-                child: Padding(
-                  padding: kCardPadding,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
-                      Text('Head2Head'),
-                      SizedBox(height: 8),
-                      Head2Head(),
-                    ],
-                  ),
-                ),
+              SizedBox(height: 8),
+              CardWrapper(
+                label: 'MatchProbabilities',
+                child: Probabilities(),
+              ),
+              SizedBox(height: 8),
+              CardWrapper(
+                label: 'Head2Head',
+                child: Head2Head(),
               ),
             ],
           ),
