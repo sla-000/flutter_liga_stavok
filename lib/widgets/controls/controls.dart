@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/di/injections.dart';
+import 'package:flutter_liga_stavok/logic/exceptions.dart';
 import 'package:flutter_liga_stavok/logic/selected_event/selected_event_bloc.dart';
 import 'package:flutter_liga_stavok/rest/api/requests.dart';
 import 'package:flutter_liga_stavok/rest/models/daily_schedule.dart'
@@ -87,11 +88,15 @@ class Controls extends StatelessWidget {
       final dailySchedule.Data data = await getDailySchedule(currentDate);
       _log.finest(() => '_getToday: data=$data');
 
+      if (data == null) {
+        throw DataEmptyAppWarning();
+      }
+
       final dailySchedule.SportEvent selectedEvent =
           await showDialog<dailySchedule.SportEvent>(
         context: context,
         child: SelectEventDialog(
-          sportEvents: data.sportEvents,
+          sportEvents: data?.sportEvents,
         ),
       );
 
