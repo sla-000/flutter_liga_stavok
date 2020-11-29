@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_liga_stavok/di/injections.dart';
 import 'package:flutter_liga_stavok/theme/physics.dart';
+import 'package:flutter_liga_stavok/theme/theme.dart';
 import 'package:flutter_liga_stavok/utils/logging.dart';
 import 'package:flutter_liga_stavok/widgets/controls/controls.dart';
 import 'package:flutter_liga_stavok/widgets/liga_stavok.dart';
@@ -25,10 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Liga Stavok Flutterthon',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: getAppTheme(),
       home: MyHomePage(title: 'Liga Stavok Flutterthon'),
     );
   }
