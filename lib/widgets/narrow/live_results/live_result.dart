@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/di/injections.dart';
 import 'package:flutter_liga_stavok/logic/selected_event/selected_event_bloc.dart';
-import 'package:flutter_liga_stavok/rest/models/daily_schedule.dart'
-    as dailySchedule;
-import 'package:flutter_liga_stavok/rest/models/live_results.dart'
-    as live_results;
+import 'package:flutter_liga_stavok/rest/models/common.dart';
 import 'package:logging/logging.dart';
 
 final Logger _log = Logger('LiveResults');
@@ -15,17 +12,16 @@ class LiveResult extends StatelessWidget {
     this.result,
   }) : super(key: key);
 
-  final live_results.Result result;
+  final Result result;
 
   @override
   Widget build(BuildContext context) {
     String home;
     String away;
 
-    final List<live_results.Competitor> liveCompetitors =
-        result?.sportEvent?.competitors;
+    final List<Competitor> liveCompetitors = result?.sportEvent?.competitors;
 
-    final List<dailySchedule.Competitor> selectedCompetitors =
+    final List<Competitor> selectedCompetitors =
         getIt.get<SelectedEventBloc>().value?.competitors;
 
     if ((liveCompetitors?.length ?? 0) == 2) {

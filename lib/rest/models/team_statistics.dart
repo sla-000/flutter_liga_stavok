@@ -1,3 +1,4 @@
+import 'package:flutter_liga_stavok/rest/models/common.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'team_statistics.g.dart';
@@ -26,89 +27,6 @@ class Data {
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
   Map<String, dynamic> toJson() => _$DataToJson(this);
-}
-
-@JsonSerializable()
-class Tournament {
-  String id;
-  String name;
-  Sport sport;
-  Sport category;
-  CurrentSeason currentSeason;
-
-  Tournament(
-      {this.id, this.name, this.sport, this.category, this.currentSeason});
-
-  factory Tournament.fromJson(Map<String, dynamic> json) =>
-      _$TournamentFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TournamentToJson(this);
-}
-
-@JsonSerializable()
-class Sport {
-  String id;
-  String name;
-
-  Sport({this.id, this.name});
-
-  factory Sport.fromJson(Map<String, dynamic> json) => _$SportFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SportToJson(this);
-}
-
-@JsonSerializable()
-class CurrentSeason {
-  String id;
-  String name;
-  String startDate;
-  String endDate;
-  String year;
-
-  CurrentSeason({this.id, this.name, this.startDate, this.endDate, this.year});
-
-  factory CurrentSeason.fromJson(Map<String, dynamic> json) =>
-      _$CurrentSeasonFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CurrentSeasonToJson(this);
-}
-
-@JsonSerializable()
-class Team {
-  String id;
-  String name;
-  String country;
-  String countryCode;
-  Sport sport;
-  Sport category;
-  String abbreviation;
-
-  Team(
-      {this.id,
-      this.name,
-      this.country,
-      this.countryCode,
-      this.sport,
-      this.category,
-      this.abbreviation});
-
-  factory Team.fromJson(Map<String, dynamic> json) => _$TeamFromJson(json);
-
-  Map<String, dynamic> toJson() => _$TeamToJson(this);
-}
-
-@JsonSerializable()
-class Category {
-  String id;
-  String name;
-  String countryCode;
-
-  Category({this.id, this.name, this.countryCode});
-
-  factory Category.fromJson(Map<String, dynamic> json) =>
-      _$CategoryFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CategoryToJson(this);
 }
 
 @JsonSerializable()

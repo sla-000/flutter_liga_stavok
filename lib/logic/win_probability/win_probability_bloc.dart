@@ -5,20 +5,19 @@ import 'package:flutter_liga_stavok/logic/exceptions.dart';
 import 'package:flutter_liga_stavok/logic/selected_event/selected_event_bloc.dart';
 import 'package:flutter_liga_stavok/logic/subscribe_bloc.dart';
 import 'package:flutter_liga_stavok/rest/api/requests.dart';
-import 'package:flutter_liga_stavok/rest/models/daily_schedule.dart'
-    as daily_schedule;
+import 'package:flutter_liga_stavok/rest/models/common.dart';
 import 'package:flutter_liga_stavok/rest/models/match_probabilities.dart'
     as match_probabilities;
 import 'package:logging/logging.dart';
 
 final Logger _log = Logger('WinProbabilityBloc');
 
-class WinProbabilityBloc extends SubscribeBloc<daily_schedule.SportEvent,
-    match_probabilities.Probabilities> {
+class WinProbabilityBloc
+    extends SubscribeBloc<SportEvent, match_probabilities.Probabilities> {
   @override
-  StreamSubscription<daily_schedule.SportEvent> subscribe() {
+  StreamSubscription<SportEvent> subscribe() {
     return getIt.get<SelectedEventBloc>().stream.listen(
-        (daily_schedule.SportEvent sportEvent) async {
+        (SportEvent sportEvent) async {
       _log.finest(() => 'subscribe: sportEvent=$sportEvent');
       if (sportEvent?.competitors?.isEmpty ?? true) {
         clear();

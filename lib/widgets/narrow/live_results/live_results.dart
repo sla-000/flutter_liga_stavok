@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/di/injections.dart';
 import 'package:flutter_liga_stavok/logic/live_results/live_results_bloc.dart';
-import 'package:flutter_liga_stavok/rest/models/live_results.dart'
-    as live_results;
+import 'package:flutter_liga_stavok/rest/models/common.dart';
 import 'package:flutter_liga_stavok/utils/exception.dart';
 import 'package:flutter_liga_stavok/widgets/common/busy_widget.dart';
 import 'package:flutter_liga_stavok/widgets/common/fail_widget.dart';
@@ -18,10 +17,9 @@ class LiveResults extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<live_results.Result>(
+    return StreamBuilder<Result>(
       stream: getIt.get<LiveResultsBloc>().stream,
-      builder:
-          (BuildContext context, AsyncSnapshot<live_results.Result> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<Result> snapshot) {
         if (snapshot.hasError) {
           if (snapshot.error is AppBusy) {
             return const BusyWidget(child: const LiveResult());

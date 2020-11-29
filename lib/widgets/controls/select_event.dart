@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_liga_stavok/rest/models/daily_schedule.dart'
-    as dailySchedule;
+import 'package:flutter_liga_stavok/rest/models/common.dart';
 import 'package:logging/logging.dart';
 
 final Logger _log = Logger('SelectEventDialog');
@@ -11,7 +10,7 @@ class SelectEventDialog extends StatelessWidget {
     this.sportEvents,
   }) : super(key: key);
 
-  final List<dailySchedule.SportEvent> sportEvents;
+  final List<SportEvent> sportEvents;
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +22,15 @@ class SelectEventDialog extends StatelessWidget {
 
   List<Widget> _getChildren(BuildContext context) {
     return sportEvents
-        .map((dailySchedule.SportEvent sportEvent) =>
-            _getChild(context, sportEvent))
+        .map((SportEvent sportEvent) => _getChild(context, sportEvent))
         .toList(growable: false);
   }
 
-  Widget _getChild(BuildContext context, dailySchedule.SportEvent sportEvent) {
+  Widget _getChild(BuildContext context, SportEvent sportEvent) {
     return InkWell(
       onTap: () {
         _log.info(() => '_getChild: onTap: sportEvent=$sportEvent');
-        Navigator.of(context).pop<dailySchedule.SportEvent>(sportEvent);
+        Navigator.of(context).pop<SportEvent>(sportEvent);
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -44,7 +42,7 @@ class SelectEventDialog extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(sportEvent.scheduled.toLocal().toString()),
+                Text(sportEvent.scheduled),
                 const SizedBox(height: 4),
                 Competitors(
                   competitors: sportEvent.competitors,
@@ -64,7 +62,7 @@ class Competitors extends StatelessWidget {
     this.competitors,
   }) : super(key: key);
 
-  final List<dailySchedule.Competitor> competitors;
+  final List<Competitor> competitors;
 
   @override
   Widget build(BuildContext context) {
