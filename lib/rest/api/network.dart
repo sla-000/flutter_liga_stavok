@@ -25,11 +25,15 @@ class Network {
 
       final Response response = await get(url);
 
-      if (response.statusCode < 400) {
+      if (response.statusCode == 404) {
+        _log.info(() => 'getData: No data, url=$url');
+        return null;
+      } else if (response.statusCode < 400) {
         return response.body;
       } else {
         _log.warning(
-            () => 'getData: ${response.statusCode}: ${response.reasonPhrase}');
+            () => 'getData: url=$url, statusCode=${response.statusCode}'
+                ', reasonPhrase=${response.reasonPhrase}');
         throw HttpException('${response.statusCode}: ${response.reasonPhrase}');
       }
     } on Exception catch (error) {
