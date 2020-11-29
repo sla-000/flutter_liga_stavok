@@ -132,6 +132,7 @@ class Season {
   final DateTime endDate;
   final String year;
   final String tournamentId;
+
   factory Season.fromJson(Map<String, dynamic> json) => _$SeasonFromJson(json);
 
   Map<String, dynamic> toJson() => _$SeasonToJson(this);
