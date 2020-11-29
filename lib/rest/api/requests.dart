@@ -7,6 +7,8 @@ import 'package:flutter_liga_stavok/rest/models/daily_schedule.dart'
     as daily_schedule;
 import 'package:flutter_liga_stavok/rest/models/head_2_head.dart'
     as head_2_head;
+import 'package:flutter_liga_stavok/rest/models/live_results.dart'
+    as live_results;
 import 'package:flutter_liga_stavok/rest/models/match_probabilities.dart'
     as match_probabilities;
 import 'package:flutter_liga_stavok/rest/models/team_statistics.dart'
@@ -42,6 +44,9 @@ Future<daily_results.Data> getDailyResults(DateTime date) async {
       '$urlSuffix');
 
   final String dataStr = await network.getData();
+  if (dataStr == null) {
+    return null;
+  }
 
   final dynamic data = json.decode(dataStr);
   final daily_results.Data parsedData =
@@ -60,6 +65,9 @@ Future<team_statistics.Data> getTeamStatistics(
       '$urlSuffix');
 
   final String dataStr = await network.getData();
+  if (dataStr == null) {
+    return null;
+  }
 
   final dynamic data = json.decode(dataStr);
   final team_statistics.Data parsedData =
@@ -78,6 +86,9 @@ Future<daily_schedule.Data> getDailySchedule(DateTime date) async {
       '$urlSuffix');
 
   final String dataStr = await network.getData();
+  if (dataStr == null) {
+    return null;
+  }
 
   final dynamic data = json.decode(dataStr);
   final daily_schedule.Data parsedData =
@@ -98,6 +109,9 @@ Future<head_2_head.Data> getHead2Head(
       '$urlSuffix');
 
   final String dataStr = await network.getData();
+  if (dataStr == null) {
+    return null;
+  }
 
   final dynamic data = json.decode(dataStr);
   final head_2_head.Data parsedData =
@@ -114,10 +128,33 @@ Future<match_probabilities.Data> getMatchProbabilities(String matchId) async {
       '$urlSuffix');
 
   final String dataStr = await network.getData();
+  if (dataStr == null) {
+    return null;
+  }
 
   final dynamic data = json.decode(dataStr);
   final match_probabilities.Data parsedData =
       match_probabilities.Data.fromJson(data as Map<String, dynamic>);
+  return parsedData;
+}
+
+Future<live_results.Data> getLiveResults() async {
+  _log.finest(() => 'getLiveResults:');
+
+  final Network network = Network('$urlPrefix'
+      '/schedules'
+      '/live'
+      '/results.$format'
+      '$urlSuffix');
+
+  final String dataStr = await network.getData();
+  if (dataStr == null) {
+    return null;
+  }
+
+  final dynamic data = json.decode(dataStr);
+  final live_results.Data parsedData =
+      live_results.Data.fromJson(data as Map<String, dynamic>);
   return parsedData;
 }
 
@@ -130,6 +167,9 @@ Future<match_probabilities.Data> getMatchProbabilities(String matchId) async {
 //       '$urlSuffix');
 //
 //   final String dataStr = await network.getData();
+// if( dataStr == null ) {
+// return null;
+// }
 //
 //   // final dynamic data = json.decode(dataStr);
 //   // final head2Head.Data parsedData =
