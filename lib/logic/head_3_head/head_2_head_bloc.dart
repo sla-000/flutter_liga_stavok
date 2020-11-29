@@ -28,6 +28,11 @@ class Head2HeadBloc extends SubscribeBloc<SportEvent, head_2_head.Data> {
 
         final head_2_head.Data data = await getHead2Head(
             sportEvent.competitors[0].id, sportEvent.competitors[1].id);
+        if (data == null) {
+          _log.finest(() => 'subscribe: No data');
+          clear();
+          return;
+        }
 
         add(data);
       } on Exception catch (error) {

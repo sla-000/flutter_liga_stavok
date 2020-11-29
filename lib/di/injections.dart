@@ -1,3 +1,4 @@
+import 'package:flutter_liga_stavok/logic/fun_facts/fun_facts_bloc.dart';
 import 'package:flutter_liga_stavok/logic/head_3_head/head_2_head_bloc.dart';
 import 'package:flutter_liga_stavok/logic/live_results/live_results_bloc.dart';
 import 'package:flutter_liga_stavok/logic/selected_event/selected_event_bloc.dart';
@@ -14,6 +15,8 @@ void injectionsInit() {
   getIt.registerSingleton<Head2HeadBloc>(Head2HeadBloc());
   getIt.registerSingleton<LiveResultsBloc>(LiveResultsBloc());
 
+  getIt.registerSingleton<FunFactsBloc>(FunFactsBloc());
+
   getIt.registerSingleton<TimerBloc>(TimerBloc());
 }
 
@@ -23,6 +26,8 @@ void injectionsDispose() {
   getIt.get<WinProbabilityBloc>().dispose();
   getIt.get<Head2HeadBloc>().dispose();
   getIt.get<LiveResultsBloc>().dispose();
+
+  getIt.get<FunFactsBloc>().dispose();
 
   getIt.get<TimerBloc>().dispose();
 

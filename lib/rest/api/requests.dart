@@ -5,6 +5,7 @@ import 'package:flutter_liga_stavok/rest/models/daily_results.dart'
     as daily_results;
 import 'package:flutter_liga_stavok/rest/models/daily_schedule.dart'
     as daily_schedule;
+import 'package:flutter_liga_stavok/rest/models/fun_facts.dart' as fun_facts;
 import 'package:flutter_liga_stavok/rest/models/head_2_head.dart'
     as head_2_head;
 import 'package:flutter_liga_stavok/rest/models/live_results.dart'
@@ -155,6 +156,26 @@ Future<live_results.Data> getLiveResults() async {
   final dynamic data = json.decode(dataStr);
   final live_results.Data parsedData =
       live_results.Data.fromJson(data as Map<String, dynamic>);
+  return parsedData;
+}
+
+Future<fun_facts.Data> getFunFacts(String matchId) async {
+  _log.finest(() => 'getFunFacts: matchId=$matchId');
+
+  final Network network = Network('$urlPrefix'
+      '/matches'
+      '/$matchId'
+      '/funfacts.$format'
+      '$urlSuffix');
+
+  final String dataStr = await network.getData();
+  if (dataStr == null) {
+    return null;
+  }
+
+  final dynamic data = json.decode(dataStr);
+  final fun_facts.Data parsedData =
+      fun_facts.Data.fromJson(data as Map<String, dynamic>);
   return parsedData;
 }
 

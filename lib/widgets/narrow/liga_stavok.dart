@@ -3,6 +3,7 @@ import 'package:flutter_liga_stavok/theme/elevations.dart';
 import 'package:flutter_liga_stavok/theme/paddings.dart';
 import 'package:flutter_liga_stavok/theme/physics.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/card_wrapper.dart';
+import 'package:flutter_liga_stavok/widgets/narrow/fun_facts/fun_facts.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/head2head/head2head.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/live_results/live_results.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/probability/probabilities.dart';
@@ -37,6 +38,11 @@ class LigaStavokNarrow extends StatelessWidget {
               CardWrapper(
                 label: 'Head2Head',
                 child: Head2Head(),
+              ),
+              SizedBox(height: 8),
+              CardWrapper(
+                label: 'FunFacts',
+                child: FunFacts(),
               ),
             ],
           ),

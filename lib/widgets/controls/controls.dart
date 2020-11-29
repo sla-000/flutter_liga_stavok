@@ -88,7 +88,6 @@ class Controls extends StatelessWidget {
     try {
       final dailySchedule.Data data = await getDailySchedule(currentDate);
       _log.finest(() => '_getToday: data=$data');
-
       if (data == null) {
         throw DataEmptyAppWarning();
       }
