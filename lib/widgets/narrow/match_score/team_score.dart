@@ -32,9 +32,9 @@ class TeamScore extends StatelessWidget {
             }
 
             return Score(
-              period1: _getPeriod1(status),
-              period2: _getPeriod2(status),
-              score: _getScore(status),
+              period1: _getLivePeriod1(status),
+              period2: _getLivePeriod2(status),
+              score: _getLiveScore(status),
             );
           }
 
@@ -44,11 +44,11 @@ class TeamScore extends StatelessWidget {
     );
   }
 
-  String _getScore(SportEventStatus status) {
+  String _getLiveScore(SportEventStatus status) {
     return home ? status.homeScore?.toString() : status.awayScore?.toString();
   }
 
-  String _getPeriod1(SportEventStatus status) {
+  String _getLivePeriod1(SportEventStatus status) {
     if ((status.periodScores?.length ?? 0) < 1) {
       return null;
     }
@@ -58,7 +58,7 @@ class TeamScore extends StatelessWidget {
         : status.periodScores[0].awayScore?.toString();
   }
 
-  String _getPeriod2(SportEventStatus status) {
+  String _getLivePeriod2(SportEventStatus status) {
     if ((status.periodScores?.length ?? 0) < 2) {
       return null;
     }

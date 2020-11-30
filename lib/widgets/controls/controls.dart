@@ -34,7 +34,7 @@ class Controls extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text('Select events date'),
+              const Text('Controls'),
               const SizedBox(height: 8),
               SingleChildScrollView(
                 physics: scrollPhysics,
@@ -46,6 +46,11 @@ class Controls extends StatelessWidget {
                       onPressed: () => _getToday(context),
                     ),
                     const SizedBox(width: 8),
+                    // RaisedButton(
+                    //   child: const Icon(Icons.calendar_today, size: 16),
+                    //   onPressed: () => _selectDate(context),
+                    // ),
+                    // const SizedBox(width: 8),
                     RaisedButton(
                       child: const Icon(Icons.settings, size: 16),
                       onPressed: () => _settings(context),
@@ -61,7 +66,8 @@ class Controls extends StatelessWidget {
   }
 
   void _getToday(BuildContext context) async {
-    final DateTime currentDate = DateTime.now();
+    final DateTime currentDate =
+        DateTime.now().subtract(const Duration(hours: 4));
 
     await _getDate(currentDate, context);
   }
