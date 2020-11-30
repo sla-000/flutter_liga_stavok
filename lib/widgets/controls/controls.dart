@@ -42,13 +42,8 @@ class Controls extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     RaisedButton(
-                      child: Text('Today'),
+                      child: const Icon(Icons.sports_soccer, size: 16),
                       onPressed: () => _getToday(context),
-                    ),
-                    const SizedBox(width: 8),
-                    RaisedButton(
-                      child: Text('Select date'),
-                      onPressed: () => _selectDate(context),
                     ),
                     const SizedBox(width: 8),
                     RaisedButton(
