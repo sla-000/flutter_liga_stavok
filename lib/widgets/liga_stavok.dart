@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_liga_stavok/widgets/card_wrapper.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/liga_stavok.dart';
 import 'package:logging/logging.dart';
 
@@ -22,10 +23,16 @@ class LigaStavok extends StatelessWidget {
           minHeight: size.height * 0.3,
           maxHeight: size.height * 0.6,
         ),
-        child: const LigaStavokNarrow(),
+        child: const CardWrapper(
+          label: '',
+          child: LigaStavokNarrow(),
+        ),
       );
     } else {
-      return const LigaStavokNarrow();
+      return const CardWrapper(
+        label: '',
+        child: LigaStavokNarrow(),
+      );
       // todo add Wide
       // return const LigaStavokWide();
     }

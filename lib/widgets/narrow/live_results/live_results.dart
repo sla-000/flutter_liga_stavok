@@ -3,7 +3,6 @@ import 'package:flutter_liga_stavok/di/injections.dart';
 import 'package:flutter_liga_stavok/logic/live_results/live_results_bloc.dart';
 import 'package:flutter_liga_stavok/rest/models/common.dart';
 import 'package:flutter_liga_stavok/utils/exception.dart';
-import 'package:flutter_liga_stavok/widgets/common/busy_widget.dart';
 import 'package:flutter_liga_stavok/widgets/common/fail_widget.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/live_results/live_result.dart';
 import 'package:logging/logging.dart';
@@ -22,7 +21,7 @@ class LiveResults extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot<Result> snapshot) {
         if (snapshot.hasError) {
           if (snapshot.error is AppBusy) {
-            return const BusyWidget(child: const LiveResult());
+            assert(false, 'AppBusy is disabled for Live');
           }
 
           return FailWidget(
