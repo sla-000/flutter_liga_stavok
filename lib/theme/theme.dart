@@ -27,8 +27,8 @@ ThemeData getAppTheme() {
         fontWeight: FontWeight.w400,
       ),
       headline6: GoogleFonts.sourceSansPro(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
+        fontSize: 12,
+        fontWeight: FontWeight.w900,
       ),
       subtitle1: GoogleFonts.sourceSansPro(
         fontSize: 18,

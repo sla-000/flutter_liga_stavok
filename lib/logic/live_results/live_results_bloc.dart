@@ -47,7 +47,7 @@ class LiveResultsBloc extends SubscribeBloc<SportEvent, Result> {
         add(result);
       } on Exception catch (error) {
         _log.warning(() => 'subscribe: error=$error');
-        addError(error);
+        clear();
       }
     }, onError: (Object error) {
       _log.finest(() => 'subscribe: error=$error');

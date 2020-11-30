@@ -40,7 +40,7 @@ class WinProbabilityBloc
         add(data.probabilities);
       } on Exception catch (error) {
         _log.warning(() => 'subscribe: error=$error');
-        addError(error);
+        clear();
       }
     }, onError: (Object error) {
       _log.finest(() => 'subscribe: error=$error');
