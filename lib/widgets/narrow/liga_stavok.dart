@@ -42,11 +42,7 @@ class LigaStavokNarrow extends StatelessWidget {
         const Positioned(
           top: 5,
           left: 5,
-          child: SizedBox(
-            width: 16,
-            height: 16,
-            child: LoadingIndicator(),
-          ),
+          child: LoadingIndicator(),
         ),
       ],
     );

@@ -16,15 +16,17 @@ class LoadingIndicator extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot<Result> snapshot) {
         if (snapshot.hasError) {
           if (snapshot.error is AppBusy) {
-            return const CircularProgressIndicator();
+            return Container(
+              height: 12,
+              width: 12,
+              child: const CircularProgressIndicator(),
+            );
           }
 
-          return FittedBox(
-            child: Icon(
-              Icons.warning,
-              color: Colors.red[400],
-            ),
-            fit: BoxFit.contain,
+          return Icon(
+            Icons.warning,
+            color: Colors.red[400],
+            size: 16,
           );
         }
 
