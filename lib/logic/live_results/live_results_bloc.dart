@@ -28,8 +28,6 @@ class LiveResultsBloc extends SubscribeBloc<SportEvent, Result> {
       }
 
       try {
-        // addError(LoadingAppBusy());
-
         final live_results.Data data = await getLiveResults();
         if (data?.results?.isEmpty ?? true) {
           clear();
