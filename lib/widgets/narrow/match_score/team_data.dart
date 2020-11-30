@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_liga_stavok/widgets/narrow/match_score/team_dress.dart';
 
-const double _kWidgetWidth = double.infinity;
-const double _kWidgetHeight = 16;
+const double _kWidgetHeight = 60;
 
 class TeamData extends StatelessWidget {
   const TeamData({
@@ -13,11 +13,14 @@ class TeamData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        Center(),
-      ],
+    return Container(
+      height: _kWidgetHeight,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          TeamDress(home: home),
+        ],
+      ),
     );
   }
 }

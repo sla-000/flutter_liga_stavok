@@ -48,12 +48,12 @@ class Overview extends StatelessWidget {
               SizedBox(height: 8),
               CardWrapper(
                 label: 'TeamProfileHome',
-                child: TeamProfileHome(),
+                child: HomeTeamJersey(),
               ),
               SizedBox(height: 8),
               CardWrapper(
                 label: 'TeamProfileAway',
-                child: TeamProfileAway(),
+                child: AwayTeamJersey(),
               ),
             ],
           ),

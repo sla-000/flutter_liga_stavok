@@ -5,16 +5,13 @@ import 'package:flutter_liga_stavok/logic/team_profile/home_team_bloc.dart';
 import 'package:flutter_liga_stavok/logic/team_profile/team_profile_bloc.dart';
 import 'package:flutter_liga_stavok/rest/models/team_profile.dart'
     as team_profile;
-import 'package:flutter_liga_stavok/utils/exception.dart';
-import 'package:flutter_liga_stavok/widgets/common/busy_widget.dart';
-import 'package:flutter_liga_stavok/widgets/common/fail_widget.dart';
 import 'package:flutter_liga_stavok/widgets/common/team_profile/jersey.dart';
 import 'package:logging/logging.dart';
 
 final Logger _log = Logger('TeamProfile');
 
-class TeamProfileHome extends StatelessWidget {
-  const TeamProfileHome({
+class HomeTeamJersey extends StatelessWidget {
+  const HomeTeamJersey({
     Key key,
   }) : super(key: key);
 
@@ -27,8 +24,8 @@ class TeamProfileHome extends StatelessWidget {
   }
 }
 
-class TeamProfileAway extends StatelessWidget {
-  const TeamProfileAway({
+class AwayTeamJersey extends StatelessWidget {
+  const AwayTeamJersey({
     Key key,
   }) : super(key: key);
 
@@ -58,37 +55,25 @@ class TeamProfile extends StatelessWidget {
       builder:
           (BuildContext context, AsyncSnapshot<team_profile.Data> snapshot) {
         if (snapshot.hasError) {
-          if (snapshot.error is AppBusy) {
-            return const BusyWidget(child: _TeamProfile());
-          }
-
-          return FailWidget(
-            error: snapshot.error.toString(),
-            child: const _TeamProfile(),
-            onTap: () {
-              _log.info(() => 'build: onTap: error=${snapshot.error}');
-              bloc.resubscribe();
-            },
-          );
+          return const _TeamJersey();
         }
 
         if (snapshot.hasData) {
-          _log.finest(() => 'build: data=${snapshot.data}');
-          return _TeamProfile(
+          return _TeamJersey(
             home: home,
             key: ValueKey<int>(snapshot.data.hashCode),
             data: snapshot.data,
           );
         }
 
-        return const _TeamProfile();
+        return const _TeamJersey();
       },
     );
   }
 }
 
-class _TeamProfile extends StatelessWidget {
-  const _TeamProfile({
+class _TeamJersey extends StatelessWidget {
+  const _TeamJersey({
     Key key,
     this.home,
     this.data,
