@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_liga_stavok/widgets/narrow/match_score.dart';
+import 'package:flutter_liga_stavok/widgets/narrow/match_score/match_score.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/match_time.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/start_time.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/team_chances.dart';
