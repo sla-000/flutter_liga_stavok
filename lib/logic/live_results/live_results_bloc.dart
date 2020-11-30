@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_liga_stavok/di/injections.dart';
+import 'package:flutter_liga_stavok/logic/exceptions.dart';
 import 'package:flutter_liga_stavok/logic/selected_event/selected_event_bloc.dart';
 import 'package:flutter_liga_stavok/logic/subscribe_bloc.dart';
 import 'package:flutter_liga_stavok/logic/timer/timer_bloc.dart';
@@ -28,6 +29,8 @@ class LiveResultsBloc extends SubscribeBloc<SportEvent, Result> {
       }
 
       try {
+        addError(LoadingAppBusy());
+
         final live_results.Data data = await getLiveResults();
         if (data?.results?.isEmpty ?? true) {
           clear();
@@ -47,7 +50,7 @@ class LiveResultsBloc extends SubscribeBloc<SportEvent, Result> {
         add(result);
       } on Exception catch (error) {
         _log.warning(() => 'subscribe: error=$error');
-        clear();
+        addError(error);
       }
     }, onError: (Object error) {
       _log.finest(() => 'subscribe: error=$error');

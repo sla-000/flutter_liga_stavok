@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_liga_stavok/di/injections.dart';
+import 'package:flutter_liga_stavok/logic/exceptions.dart';
 import 'package:flutter_liga_stavok/logic/selected_event/selected_event_bloc.dart';
 import 'package:flutter_liga_stavok/logic/subscribe_bloc.dart';
 import 'package:flutter_liga_stavok/logic/timer/timer_bloc.dart';
@@ -29,6 +30,8 @@ class WinProbabilityBloc
       }
 
       try {
+        addError(LoadingAppBusy());
+
         final match_probabilities.Data data =
             await getMatchProbabilities(sportEvent.id);
         if (data == null) {
@@ -40,7 +43,7 @@ class WinProbabilityBloc
         add(data.probabilities);
       } on Exception catch (error) {
         _log.warning(() => 'subscribe: error=$error');
-        clear();
+        addError(error);
       }
     }, onError: (Object error) {
       _log.finest(() => 'subscribe: error=$error');

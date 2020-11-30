@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/match_score/team_abbreviation.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/match_score/team_dress.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/match_score/team_name.dart';
+import 'package:flutter_liga_stavok/widgets/narrow/match_score/team_score.dart';
 
 class TeamData extends StatelessWidget {
   const TeamData({
@@ -25,19 +26,5 @@ class TeamData extends StatelessWidget {
         TeamScore(home: home),
       ],
     );
-  }
-}
-
-class TeamScore extends StatelessWidget {
-  const TeamScore({
-    Key key,
-    @required this.home,
-  }) : super(key: key);
-
-  final bool home;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center();
   }
 }
