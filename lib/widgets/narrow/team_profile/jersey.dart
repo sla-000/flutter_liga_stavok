@@ -57,60 +57,30 @@ class JerseyLook extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Cube(
-                  color: colors[0],
-                  borderLeft: true,
-                  borderTop: true,
-                  borderBottom: true,
-                ),
-                Cube(
-                  color: colors[1],
-                  borderTop: true,
-                ),
-                Cube(
-                  color: colors[2],
-                  borderTop: true,
-                ),
-                Cube(
-                  color: colors[3],
-                  borderTop: true,
-                  borderRight: true,
-                  borderBottom: true,
-                ),
+                Cube(color: colors[0]),
+                Cube(color: colors[1]),
+                Cube(color: colors[2]),
+                Cube(color: colors[3]),
               ],
             ),
             Row(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Cube(color: Colors.transparent),
-                Cube(
-                  color: colors[4],
-                  borderLeft: true,
-                ),
-                Cube(
-                  color: colors[5],
-                  borderRight: true,
-                ),
-                const Cube(color: Colors.transparent),
+                const Cube(visible: false),
+                Cube(color: colors[4]),
+                Cube(color: colors[5]),
+                const Cube(visible: false),
               ],
             ),
             Row(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Cube(color: Colors.transparent),
-                Cube(
-                  color: colors[6],
-                  borderLeft: true,
-                  borderBottom: true,
-                ),
-                Cube(
-                  color: colors[7],
-                  borderRight: true,
-                  borderBottom: true,
-                ),
-                const Cube(color: Colors.transparent),
+                const Cube(visible: false),
+                Cube(color: colors[6]),
+                Cube(color: colors[7]),
+                const Cube(visible: false),
               ],
             ),
           ],
@@ -149,53 +119,32 @@ Color parseColor(String color) {
 class Cube extends StatelessWidget {
   const Cube({
     Key key,
-    this.borderTop = false,
-    this.borderBottom = false,
-    this.borderLeft = false,
-    this.borderRight = false,
     this.color = Colors.white,
-    this.borderColor = Colors.grey,
+    this.visible = true,
   }) : super(key: key);
 
-  final bool borderTop;
-  final bool borderBottom;
-  final bool borderLeft;
-  final bool borderRight;
-
   final Color color;
-  final Color borderColor;
+  final bool visible;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 20,
-      height: 20,
-      decoration: BoxDecoration(
-        color: color,
-        border: Border(
-          top: BorderSide(
-            color: borderColor,
-            width: 1.0,
-            style: borderTop ? BorderStyle.solid : BorderStyle.none,
-          ),
-          bottom: BorderSide(
-            color: borderColor,
-            width: 1.0,
-            style: borderBottom ? BorderStyle.solid : BorderStyle.none,
-          ),
-          left: BorderSide(
-            color: borderColor,
-            width: 1.0,
-            style: borderLeft ? BorderStyle.solid : BorderStyle.none,
-          ),
-          right: BorderSide(
-            color: borderColor,
-            width: 1.0,
-            style: borderRight ? BorderStyle.solid : BorderStyle.none,
-          ),
-        ),
+    if (!visible) {
+      return Container(
+        color: Colors.transparent,
+        width: 20,
+        height: 20,
+      );
+    }
+
+    return Card(
+      margin: EdgeInsets.zero,
+      color: color,
+      elevation: 4,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+      child: Container(
+        width: 20,
+        height: 20,
       ),
-      child: Center(),
     );
   }
 }
