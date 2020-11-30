@@ -139,7 +139,7 @@ class Cube extends StatelessWidget {
     return Card(
       margin: EdgeInsets.zero,
       color: color,
-      elevation: 4,
+      elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
       child: Container(
         width: 20,
