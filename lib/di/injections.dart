@@ -11,33 +11,25 @@ import 'package:get_it/get_it.dart';
 final GetIt getIt = GetIt.instance;
 
 void injectionsInit() {
-  getIt.registerSingleton<SelectedEventBloc>(SelectedEventBloc());
-
-  getIt.registerSingleton<WinProbabilityBloc>(WinProbabilityBloc());
-  getIt.registerSingleton<Head2HeadBloc>(Head2HeadBloc());
-  getIt.registerSingleton<LiveResultsBloc>(LiveResultsBloc());
-
-  getIt.registerSingleton<FunFactsBloc>(FunFactsBloc());
-
-  getIt.registerSingleton<HomeTeamBloc>(HomeTeamBloc());
-  getIt.registerSingleton<AwayTeamBloc>(AwayTeamBloc());
-
   getIt.registerSingleton<TimerBloc>(TimerBloc());
+
+  getIt.registerLazySingleton<SelectedEventBloc>(() => SelectedEventBloc(),
+      dispose: (SelectedEventBloc bloc) => bloc.dispose());
+
+  getIt.registerLazySingleton<WinProbabilityBloc>(() => WinProbabilityBloc(),
+      dispose: (WinProbabilityBloc bloc) => bloc.dispose());
+  getIt.registerLazySingleton<Head2HeadBloc>(() => Head2HeadBloc(),
+      dispose: (Head2HeadBloc bloc) => bloc.dispose());
+  getIt.registerLazySingleton<LiveResultsBloc>(() => LiveResultsBloc(),
+      dispose: (LiveResultsBloc bloc) => bloc.dispose());
+
+  getIt.registerLazySingleton<FunFactsBloc>(() => FunFactsBloc(),
+      dispose: (FunFactsBloc bloc) => bloc.dispose());
+
+  getIt.registerLazySingleton<HomeTeamBloc>(() => HomeTeamBloc(),
+      dispose: (HomeTeamBloc bloc) => bloc.dispose());
+  getIt.registerLazySingleton<AwayTeamBloc>(() => AwayTeamBloc(),
+      dispose: (AwayTeamBloc bloc) => bloc.dispose());
 }
 
-void injectionsDispose() {
-  getIt.get<SelectedEventBloc>().dispose();
-
-  getIt.get<WinProbabilityBloc>().dispose();
-  getIt.get<Head2HeadBloc>().dispose();
-  getIt.get<LiveResultsBloc>().dispose();
-
-  getIt.get<FunFactsBloc>().dispose();
-
-  getIt.registerSingleton<HomeTeamBloc>(HomeTeamBloc());
-  getIt.registerSingleton<AwayTeamBloc>(AwayTeamBloc());
-
-  getIt.get<TimerBloc>().dispose();
-
-  getIt.reset();
-}
+void injectionsDispose() => getIt.reset();
