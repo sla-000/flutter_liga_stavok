@@ -21,18 +21,33 @@ import 'package:logging/logging.dart';
 
 final Logger _log = Logger('Requests');
 
+const String kLeagueIntl = 'intl';
+const String kLeagueEu = 'eu';
+const String kLeagueAm = 'am';
+const String kLeagueAs = 'as';
+const String kLeagueOther = 'other';
+
+const Map<String, String> kApiKeys = <String, String>{
+  kLeagueIntl: 'vcjswdawy7hsdhmtzvr8wmat',
+  kLeagueEu: 'sk3zgmech3qczd3cv73ygdac',
+  kLeagueAm: 'en28eps3wz4kn8u6ceghs2a3',
+  kLeagueAs: 'efyt9dsvhtmftyr467fh4nqn',
+  kLeagueOther: 'munfax98aan88s2tguubrkuz',
+};
+
+String requestLeagueName = kLeagueIntl;
+
 const String baseURL = 'https://api.sportradar.us/soccer-';
 const String accessLevel = 't';
 const String version = '3';
-const String leagueGroup = 'intl';
 const String languageCode = 'en';
 const String format = 'json';
 const String apiKey = 'vcjswdawy7hsdhmtzvr8wmat';
 
-const String urlPrefix = '$baseURL$accessLevel$version'
-    '/$leagueGroup'
+String get urlPrefix => '$baseURL$accessLevel$version'
+    '/$requestLeagueName'
     '/$languageCode';
-const String urlSuffix = '?api_key=$apiKey';
+String get urlSuffix => '?api_key=${kApiKeys[requestLeagueName]}';
 
 final DateTime selectedDate = DateUtil.stringToDateFormatter('2018-06-15');
 

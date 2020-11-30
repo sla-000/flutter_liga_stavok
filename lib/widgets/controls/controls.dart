@@ -11,6 +11,7 @@ import 'package:flutter_liga_stavok/theme/paddings.dart';
 import 'package:flutter_liga_stavok/theme/physics.dart';
 import 'package:flutter_liga_stavok/utils/show_error.dart';
 import 'package:flutter_liga_stavok/widgets/controls/select_event.dart';
+import 'package:flutter_liga_stavok/widgets/controls/settings_dialog.dart';
 import 'package:logging/logging.dart';
 import 'package:platform_date_picker/platform_date_picker.dart';
 
@@ -35,23 +36,27 @@ class Controls extends StatelessWidget {
             children: [
               const Text('Select events date'),
               const SizedBox(height: 8),
-              Row(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
+              SingleChildScrollView(
+                physics: scrollPhysics,
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: <Widget>[
+                    RaisedButton(
                       child: Text('Today'),
                       onPressed: () => _getToday(context),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RaisedButton(
+                    const SizedBox(width: 8),
+                    RaisedButton(
                       child: Text('Select date'),
                       onPressed: () => _selectDate(context),
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 8),
+                    RaisedButton(
+                      child: const Icon(Icons.settings, size: 16),
+                      onPressed: () => _settings(context),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -110,5 +115,14 @@ class Controls extends StatelessWidget {
 
       showError(context, error);
     }
+  }
+
+  void _settings(BuildContext context) async {
+    await showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return SettingsDialog();
+      },
+    );
   }
 }
