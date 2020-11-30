@@ -6,7 +6,7 @@ import 'package:flutter_liga_stavok/theme/theme.dart';
 import 'package:flutter_liga_stavok/utils/logging.dart';
 import 'package:flutter_liga_stavok/widgets/controls/controls.dart';
 import 'package:flutter_liga_stavok/widgets/liga_stavok.dart';
-import 'package:flutter_liga_stavok/widgets/placeholder.dart';
+import 'package:flutter_liga_stavok/widgets/overview.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: const <Widget>[
             Controls(),
             LigaStavok(),
-            PlaceHolder(),
+            Overview(),
           ],
         ),
       ),

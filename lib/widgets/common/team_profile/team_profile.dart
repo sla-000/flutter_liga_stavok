@@ -8,7 +8,7 @@ import 'package:flutter_liga_stavok/rest/models/team_profile.dart'
 import 'package:flutter_liga_stavok/utils/exception.dart';
 import 'package:flutter_liga_stavok/widgets/common/busy_widget.dart';
 import 'package:flutter_liga_stavok/widgets/common/fail_widget.dart';
-import 'package:flutter_liga_stavok/widgets/narrow/team_profile/jersey.dart';
+import 'package:flutter_liga_stavok/widgets/common/team_profile/jersey.dart';
 import 'package:logging/logging.dart';
 
 final Logger _log = Logger('TeamProfile');

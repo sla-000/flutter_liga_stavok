@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/rest/models/common.dart';
-import 'package:flutter_liga_stavok/widgets/narrow/head2head/last_meetings/one_last_result.dart';
+import 'package:flutter_liga_stavok/widgets/common/head2head/last_meetings/one_last_result.dart';
 import 'package:logging/logging.dart';
 
 final Logger _log = Logger('LastMeetings');

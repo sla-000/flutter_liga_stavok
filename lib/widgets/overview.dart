@@ -3,14 +3,14 @@ import 'package:flutter_liga_stavok/theme/elevations.dart';
 import 'package:flutter_liga_stavok/theme/paddings.dart';
 import 'package:flutter_liga_stavok/theme/physics.dart';
 import 'package:flutter_liga_stavok/widgets/card_wrapper.dart';
-import 'package:flutter_liga_stavok/widgets/narrow/fun_facts/fun_facts.dart';
-import 'package:flutter_liga_stavok/widgets/narrow/head2head/head2head.dart';
-import 'package:flutter_liga_stavok/widgets/narrow/live_results/live_results.dart';
-import 'package:flutter_liga_stavok/widgets/narrow/probability/probabilities.dart';
-import 'package:flutter_liga_stavok/widgets/narrow/team_profile/team_profile.dart';
+import 'package:flutter_liga_stavok/widgets/common/fun_facts/fun_facts.dart';
+import 'package:flutter_liga_stavok/widgets/common/head2head/head2head.dart';
+import 'package:flutter_liga_stavok/widgets/common/live_results/live_results.dart';
+import 'package:flutter_liga_stavok/widgets/common/probability/probabilities.dart';
+import 'package:flutter_liga_stavok/widgets/common/team_profile/team_profile.dart';
 
-class PlaceHolder extends StatelessWidget {
-  const PlaceHolder({
+class Overview extends StatelessWidget {
+  const Overview({
     Key key,
   }) : super(key: key);
 

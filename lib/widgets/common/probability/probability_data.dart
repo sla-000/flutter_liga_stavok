@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_liga_stavok/widgets/narrow/probability/probability.dart';
+import 'package:flutter_liga_stavok/widgets/common/probability/probability.dart';
 import 'package:logging/logging.dart';
 
 final Logger _log = Logger('Probabilities');
