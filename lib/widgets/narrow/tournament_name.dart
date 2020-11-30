@@ -38,7 +38,7 @@ class TournamentName extends StatelessWidget {
 
               if (snapshot.hasData) {
                 return Text(
-                  snapshot.data.season?.name ?? 'Season',
+                  snapshot.data.season?.name ?? '''Season''',
                   style: Theme.of(context).textTheme.headline2,
                   overflow: TextOverflow.ellipsis,
                 );

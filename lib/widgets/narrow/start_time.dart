@@ -38,7 +38,9 @@ class StartTime extends StatelessWidget {
 
               if (snapshot.hasData) {
                 return Text(
-                  getLocalTime(snapshot.data.scheduled),
+                  snapshot.data.scheduled != null
+                      ? getLocalTime(snapshot.data.scheduled)
+                      : '',
                   style: Theme.of(context).textTheme.headline4,
                   overflow: TextOverflow.ellipsis,
                 );
@@ -56,6 +58,7 @@ class StartTime extends StatelessWidget {
     final DateTime parsedTime = DateTime.parse(time);
     final DateTime localTime = parsedTime.toLocal();
 
-    return '${localTime.day}.${localTime.month}.${localTime.year}, ${localTime.hour}:${localTime.minute}';
+    return '${localTime.day}.${localTime.month}.${localTime.year}'
+        ', ${localTime.hour}:${localTime.minute}';
   }
 }
