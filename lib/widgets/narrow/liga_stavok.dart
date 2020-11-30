@@ -17,7 +17,9 @@ class LigaStavokNarrow extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         const TournamentName(),
+        const SizedBox(height: 2),
         const StartTime(),
+        const SizedBox(height: 8),
         const MatchScore(),
         Row(
           mainAxisSize: MainAxisSize.max,

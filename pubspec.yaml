@@ -38,6 +38,8 @@ dependencies:
 
   logging: ^0.11.4
 
+  meta: ^1.2.4
+
   platform_date_picker: ^0.0.4+1
 
   rxdart: ^0.24.1

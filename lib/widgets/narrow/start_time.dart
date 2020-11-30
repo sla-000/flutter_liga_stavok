@@ -58,7 +58,10 @@ class StartTime extends StatelessWidget {
     final DateTime parsedTime = DateTime.parse(time);
     final DateTime localTime = parsedTime.toLocal();
 
-    return '${localTime.day}.${localTime.month}.${localTime.year}'
-        ', ${localTime.hour}:${localTime.minute}';
+    return '${localTime.day}.'
+        '${localTime.month.toString().padLeft(2, '0')}'
+        '.${localTime.year}'
+        ', ${localTime.hour.toString().padLeft(2, '0')}'
+        ':${localTime.minute.toString().padLeft(2, '0')}';
   }
 }

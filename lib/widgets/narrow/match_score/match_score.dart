@@ -13,6 +13,7 @@ class MatchScore extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
         const LiveSign(),
+        const SizedBox(width: 8),
         Expanded(
           child: Column(
             mainAxisSize: MainAxisSize.min,

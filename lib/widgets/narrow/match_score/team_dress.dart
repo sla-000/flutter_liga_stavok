@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/widgets/common/team_profile/team_profile.dart';
 
-const double _kWidgetHeight = 30;
-const double _kWidgetWidth = 30;
+const double _kWidgetHeight = 36;
+const double _kWidgetWidth = 36;
 
 class TeamDress extends StatelessWidget {
   const TeamDress({
