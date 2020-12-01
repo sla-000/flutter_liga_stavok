@@ -7,6 +7,8 @@ final Logger _log = Logger('TimerBloc');
 
 class TimerBloc extends Bloc<void> {
   TimerBloc() {
+    add(null);
+
     _timer = Timer(duration, _onTimer);
   }
 

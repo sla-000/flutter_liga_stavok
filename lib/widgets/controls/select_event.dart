@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/rest/models/common.dart';
+import 'package:flutter_liga_stavok/utils/dateTime.dart';
 import 'package:logging/logging.dart';
 
 final Logger _log = Logger('SelectEventDialog');
@@ -15,7 +16,7 @@ class SelectEventDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: const Text('Select event'),
+      title: Text('Select event', style: Theme.of(context).textTheme.headline2),
       children: _getChildren(context),
     );
   }
@@ -32,22 +33,25 @@ class SelectEventDialog extends StatelessWidget {
         _log.info(() => '_getChild: onTap: sportEvent=$sportEvent');
         Navigator.of(context).pop<SportEvent>(sportEvent);
       },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListTile(
-          title: Text(sportEvent.season.name),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(sportEvent.scheduled),
-                const SizedBox(height: 4),
-                Competitors(
-                  competitors: sportEvent.competitors,
-                ),
-              ],
+      child: Container(
+        decoration: BoxDecoration(border: Border.all(color: Colors.grey[100])),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
+            title: Text(sportEvent.season.name),
+            subtitle: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(getLocalTimeFromIso(sportEvent.scheduled)),
+                  const SizedBox(height: 4),
+                  Competitors(
+                    competitors: sportEvent.competitors,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

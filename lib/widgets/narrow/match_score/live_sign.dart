@@ -3,14 +3,22 @@ import 'package:flutter_liga_stavok/di/injections.dart';
 import 'package:flutter_liga_stavok/logic/live_results/live_results_bloc.dart';
 import 'package:flutter_liga_stavok/rest/models/common.dart';
 import 'package:flutter_liga_stavok/theme/durations.dart';
+import 'package:flutter_liga_stavok/utils/exception.dart';
 
 const double _kWidgetWidth = 32;
 const double _kWidgetHeight = 16;
 
-class LiveSign extends StatelessWidget {
+class LiveSign extends StatefulWidget {
   const LiveSign({
     Key key,
   }) : super(key: key);
+
+  @override
+  _LiveSignState createState() => _LiveSignState();
+}
+
+class _LiveSignState extends State<LiveSign> {
+  bool show = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +27,15 @@ class LiveSign extends StatelessWidget {
       builder:
           (BuildContext context, AsyncSnapshot<SportEventStatus> snapshot) {
         if (snapshot.hasError) {
+          if (snapshot.error is AppBusy) {
+            return LiveText(show: show);
+          }
+
           return const LiveText();
         }
 
         if (snapshot.hasData) {
-          final bool show = (snapshot.data?.status ?? '') == 'live';
+          show = (snapshot.data?.status ?? '') == 'live';
 
           return LiveText(show: show);
         }

@@ -37,7 +37,13 @@ const Map<String, String> kApiKeys = <String, String>{
   kLeagueOther: 'munfax98aan88s2tguubrkuz',
 };
 
-String requestLeagueName = kLeagueIntl;
+String currentLeagueName = kLeagueIntl;
+
+String overrideForApiKey = '';
+
+String get currentApiKey => (overrideForApiKey?.isEmpty ?? true)
+    ? kApiKeys[currentLeagueName]
+    : overrideForApiKey;
 
 const String baseURL = 'https://api.sportradar.us/soccer-';
 const String accessLevel = 't';
@@ -47,9 +53,10 @@ const String format = 'json';
 const String apiKey = 'vcjswdawy7hsdhmtzvr8wmat';
 
 String get urlPrefix => '$baseURL$accessLevel$version'
-    '/$requestLeagueName'
+    '/$currentLeagueName'
     '/$languageCode';
-String get urlSuffix => '?api_key=${kApiKeys[requestLeagueName]}';
+
+String get urlSuffix => '?api_key=$currentApiKey';
 
 final DateTime selectedDate = DateUtil.stringToDateFormatter('2018-06-15');
 

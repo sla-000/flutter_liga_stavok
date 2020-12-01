@@ -86,6 +86,9 @@ class TextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(text);
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Text(text),
+    );
   }
 }

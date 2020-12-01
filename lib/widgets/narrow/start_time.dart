@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/di/injections.dart';
 import 'package:flutter_liga_stavok/logic/selected_event/selected_event_bloc.dart';
 import 'package:flutter_liga_stavok/rest/models/common.dart';
+import 'package:flutter_liga_stavok/utils/dateTime.dart';
 import 'package:flutter_liga_stavok/utils/exception.dart';
 import 'package:flutter_liga_stavok/widgets/common/busy_widget.dart';
 import 'package:flutter_liga_stavok/widgets/common/fail_widget.dart';
@@ -38,9 +39,7 @@ class StartTime extends StatelessWidget {
 
               if (snapshot.hasData) {
                 return Text(
-                  snapshot.data.scheduled != null
-                      ? getLocalTime(snapshot.data.scheduled)
-                      : '',
+                  getLocalTimeFromIso(snapshot.data.scheduled),
                   style: Theme.of(context).textTheme.headline4,
                   overflow: TextOverflow.ellipsis,
                 );
@@ -52,16 +51,5 @@ class StartTime extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String getLocalTime(String time) {
-    final DateTime parsedTime = DateTime.parse(time);
-    final DateTime localTime = parsedTime.toLocal();
-
-    return '${localTime.day}.'
-        '${localTime.month.toString().padLeft(2, '0')}'
-        '.${localTime.year}'
-        ', ${localTime.hour.toString().padLeft(2, '0')}'
-        ':${localTime.minute.toString().padLeft(2, '0')}';
   }
 }
