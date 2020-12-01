@@ -12,6 +12,6 @@ class Probability extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('${name ?? ''}: ${value ?? ''}');
+    return Text('${name ?? " "}: ${value ?? " "}');
   }
 }

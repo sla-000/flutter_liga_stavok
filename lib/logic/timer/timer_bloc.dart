@@ -12,7 +12,7 @@ class TimerBloc extends Bloc<void> {
 
   Timer _timer;
 
-  Duration duration = const Duration(seconds: 30);
+  Duration duration = const Duration(seconds: 120);
 
   @override
   void dispose() {

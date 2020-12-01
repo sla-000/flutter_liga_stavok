@@ -3,6 +3,8 @@ import 'package:flutter_liga_stavok/di/injections.dart';
 import 'package:flutter_liga_stavok/logic/win_probability/win_probability_bloc.dart';
 import 'package:flutter_liga_stavok/rest/models/match_probabilities.dart'
     as match_probabilities;
+import 'package:flutter_liga_stavok/utils/exception.dart';
+import 'package:flutter_liga_stavok/widgets/common/busy_widget.dart';
 import 'package:flutter_liga_stavok/widgets/common/probability/probability_data.dart';
 import 'package:logging/logging.dart';
 
@@ -20,6 +22,10 @@ class Probabilities extends StatelessWidget {
       builder: (BuildContext context,
           AsyncSnapshot<match_probabilities.Probabilities> snapshot) {
         if (snapshot.hasError) {
+          if (snapshot.error is AppBusy) {
+            return const BusyWidget(child: const _Probabilities());
+          }
+
           return const _Probabilities();
         }
 
