@@ -55,7 +55,7 @@ class TeamProfile extends StatefulWidget {
 }
 
 class _TeamProfileState extends State<TeamProfile> {
-  team_profile.Data lastData;
+  team_profile.Data data;
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +69,8 @@ class _TeamProfileState extends State<TeamProfile> {
               duration: kSmallDuration,
               child: _TeamJersey(
                 home: widget.home,
-                key: ValueKey<int>(lastData?.hashCode),
-                data: lastData,
+                key: ValueKey<int>(data?.hashCode ?? 0),
+                data: data,
               ),
             );
           }
@@ -82,14 +82,14 @@ class _TeamProfileState extends State<TeamProfile> {
         }
 
         if (snapshot.hasData) {
-          lastData = snapshot.data;
+          data = snapshot.data;
 
           return AnimatedSwitcher(
             duration: kSmallDuration,
             child: _TeamJersey(
               home: widget.home,
-              key: ValueKey<int>(snapshot.data.hashCode),
-              data: snapshot.data,
+              key: ValueKey<int>(data.hashCode),
+              data: data,
             ),
           );
         }

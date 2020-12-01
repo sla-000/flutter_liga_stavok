@@ -2,14 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/di/injections.dart';
 import 'package:flutter_liga_stavok/logic/live_results/combined_results_bloc.dart';
 import 'package:flutter_liga_stavok/rest/models/common.dart';
+import 'package:flutter_liga_stavok/theme/durations.dart';
+import 'package:flutter_liga_stavok/utils/exception.dart';
 
-class TeamScore extends StatelessWidget {
+class TeamScore extends StatefulWidget {
   const TeamScore({
     Key key,
     @required this.home,
   }) : super(key: key);
 
   final bool home;
+
+  @override
+  _TeamScoreState createState() => _TeamScoreState();
+}
+
+class _TeamScoreState extends State<TeamScore> {
+  SportEventStatus data;
 
   @override
   Widget build(BuildContext context) {
@@ -20,27 +29,51 @@ class TeamScore extends StatelessWidget {
         builder:
             (BuildContext context, AsyncSnapshot<SportEventStatus> snapshot) {
           if (snapshot.hasError) {
-            return const Score();
-          }
+            if (snapshot.error is AppBusy) {
+              return AnimatedSwitcher(
+                duration: kSmallDuration,
+                child: Score(
+                  key: ValueKey<int>(data?.hashCode ?? 0),
+                  period1: _getPeriod1(data),
+                  period2: _getPeriod2(data),
+                  score: _getScore(data),
+                ),
+              );
+            }
 
-          if (snapshot.hasData) {
-            final SportEventStatus status = snapshot.data;
-
-            return Score(
-              period1: _getPeriod1(status),
-              period2: _getPeriod2(status),
-              score: _getScore(status),
+            return const AnimatedSwitcher(
+              duration: kSmallDuration,
+              child: Score(),
             );
           }
 
-          return const Score();
+          if (snapshot.hasData) {
+            data = snapshot.data;
+
+            return AnimatedSwitcher(
+              duration: kSmallDuration,
+              child: Score(
+                key: ValueKey<int>(data?.hashCode ?? 0),
+                period1: _getPeriod1(data),
+                period2: _getPeriod2(data),
+                score: _getScore(data),
+              ),
+            );
+          }
+
+          return const AnimatedSwitcher(
+            duration: kSmallDuration,
+            child: Score(),
+          );
         },
       ),
     );
   }
 
   String _getScore(SportEventStatus status) {
-    return home ? status.homeScore?.toString() : status.awayScore?.toString();
+    return widget.home
+        ? status.homeScore?.toString()
+        : status.awayScore?.toString();
   }
 
   String _getPeriod1(SportEventStatus status) {
@@ -48,7 +81,7 @@ class TeamScore extends StatelessWidget {
       return null;
     }
 
-    return home
+    return widget.home
         ? status.periodScores[0].homeScore?.toString()
         : status.periodScores[0].awayScore?.toString();
   }
@@ -58,7 +91,7 @@ class TeamScore extends StatelessWidget {
       return null;
     }
 
-    return home
+    return widget.home
         ? status.periodScores[1].homeScore?.toString()
         : status.periodScores[1].awayScore?.toString();
   }
