@@ -12,6 +12,8 @@ import 'package:flutter_liga_stavok/rest/models/live_results.dart'
     as live_results;
 import 'package:flutter_liga_stavok/rest/models/match_probabilities.dart'
     as match_probabilities;
+import 'package:flutter_liga_stavok/rest/models/match_summary.dart'
+    as match_summary;
 import 'package:flutter_liga_stavok/rest/models/team_profile.dart'
     as team_profile;
 import 'package:flutter_liga_stavok/rest/models/team_statistics.dart'
@@ -213,6 +215,25 @@ Future<team_profile.Data> getTeamProfile(String teamId) async {
   final dynamic data = json.decode(dataStr);
   final team_profile.Data parsedData =
       team_profile.Data.fromJson(data as Map<String, dynamic>);
+  return parsedData;
+}
+
+Future<match_summary.Data> getMatchSummary(String matchId) async {
+  _log.finest(() => 'getMatchSummary: matchId=$matchId');
+
+  final Network network = Network('$urlPrefix'
+      '/matches/$matchId'
+      '/summary.$format'
+      '$urlSuffix');
+
+  final String dataStr = await network.getData();
+  if (dataStr == null) {
+    return null;
+  }
+
+  final dynamic data = json.decode(dataStr);
+  final match_summary.Data parsedData =
+      match_summary.Data.fromJson(data as Map<String, dynamic>);
   return parsedData;
 }
 

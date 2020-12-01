@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/di/injections.dart';
-import 'package:flutter_liga_stavok/logic/live_results/live_results_bloc.dart';
+import 'package:flutter_liga_stavok/logic/live_results/combined_results_bloc.dart';
 import 'package:flutter_liga_stavok/rest/models/common.dart';
-
-const double _kWidgetWidth = 60;
 
 class TeamScore extends StatelessWidget {
   const TeamScore({
@@ -17,24 +15,21 @@ class TeamScore extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
-      child: StreamBuilder<Result>(
-        stream: getIt.get<LiveResultsBloc>().stream,
-        builder: (BuildContext context, AsyncSnapshot<Result> snapshot) {
+      child: StreamBuilder<SportEventStatus>(
+        stream: getIt.get<CombinedResultsBloc>().stream,
+        builder:
+            (BuildContext context, AsyncSnapshot<SportEventStatus> snapshot) {
           if (snapshot.hasError) {
             return const Score();
           }
 
           if (snapshot.hasData) {
-            final SportEventStatus status = snapshot.data.sportEventStatus;
-
-            if (status == null) {
-              return const Score();
-            }
+            final SportEventStatus status = snapshot.data;
 
             return Score(
-              period1: _getLivePeriod1(status),
-              period2: _getLivePeriod2(status),
-              score: _getLiveScore(status),
+              period1: _getPeriod1(status),
+              period2: _getPeriod2(status),
+              score: _getScore(status),
             );
           }
 
@@ -44,11 +39,11 @@ class TeamScore extends StatelessWidget {
     );
   }
 
-  String _getLiveScore(SportEventStatus status) {
+  String _getScore(SportEventStatus status) {
     return home ? status.homeScore?.toString() : status.awayScore?.toString();
   }
 
-  String _getLivePeriod1(SportEventStatus status) {
+  String _getPeriod1(SportEventStatus status) {
     if ((status.periodScores?.length ?? 0) < 1) {
       return null;
     }
@@ -58,7 +53,7 @@ class TeamScore extends StatelessWidget {
         : status.periodScores[0].awayScore?.toString();
   }
 
-  String _getLivePeriod2(SportEventStatus status) {
+  String _getPeriod2(SportEventStatus status) {
     if ((status.periodScores?.length ?? 0) < 2) {
       return null;
     }
@@ -104,14 +99,15 @@ class Score extends StatelessWidget {
               textAlign: TextAlign.right,
             ),
           ),
-        Container(
-          width: 26,
-          child: Text(
-            score ?? '0',
-            style: Theme.of(context).textTheme.headline1,
-            textAlign: TextAlign.right,
+        if (score != null)
+          Container(
+            width: 26,
+            child: Text(
+              score,
+              style: Theme.of(context).textTheme.headline1,
+              textAlign: TextAlign.right,
+            ),
           ),
-        ),
       ],
     );
   }

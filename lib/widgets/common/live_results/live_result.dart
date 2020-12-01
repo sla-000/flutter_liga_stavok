@@ -9,31 +9,29 @@ final Logger _log = Logger('LiveResults');
 class LiveResult extends StatelessWidget {
   const LiveResult({
     Key key,
-    this.result,
+    this.sportEventStatus,
   }) : super(key: key);
 
-  final Result result;
+  final SportEventStatus sportEventStatus;
 
   @override
   Widget build(BuildContext context) {
     String home;
     String away;
 
-    final List<Competitor> liveCompetitors = result?.sportEvent?.competitors;
-
-    final List<Competitor> selectedCompetitors =
+    final List<Competitor> competitors =
         getIt.get<SelectedEventBloc>().value?.competitors;
 
-    if ((liveCompetitors?.length ?? 0) == 2) {
-      home = '${liveCompetitors[0].name}'
-          ' (${liveCompetitors[0].abbreviation})';
-      away = '(${liveCompetitors[1].abbreviation})'
-          ' ${liveCompetitors[1].name}';
-    } else if ((selectedCompetitors?.length ?? 0) == 2) {
-      home = '${selectedCompetitors[0].name}'
-          ' (${selectedCompetitors[0].abbreviation})';
-      away = '(${selectedCompetitors[1].abbreviation})'
-          ' ${selectedCompetitors[1].name}';
+    if ((competitors?.length ?? 0) == 2) {
+      home = '${competitors[0].name}'
+          ' (${competitors[0].abbreviation})';
+      away = '(${competitors[1].abbreviation})'
+          ' ${competitors[1].name}';
+    } else if ((competitors?.length ?? 0) == 2) {
+      home = '${competitors[0].name}'
+          ' (${competitors[0].abbreviation})';
+      away = '(${competitors[1].abbreviation})'
+          ' ${competitors[1].name}';
     } else {
       home = '';
       away = '';
@@ -44,23 +42,23 @@ class LiveResult extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('teams: $home : $away'),
-        Text('score: ${result?.sportEventStatus?.homeScore}'
+        Text('score: ${sportEventStatus?.homeScore}'
             ' :'
-            ' ${result?.sportEventStatus?.awayScore}'),
-        Text('period: ${result?.sportEventStatus?.period}'),
-        Text('matchTime: ${result?.sportEventStatus?.clock?.matchTime}'),
-        if ((result?.sportEventStatus?.periodScores?.length ?? 0) >= 1)
+            ' ${sportEventStatus?.awayScore}'),
+        Text('period: ${sportEventStatus?.period}'),
+        Text('matchTime: ${sportEventStatus?.clock?.matchTime}'),
+        if ((sportEventStatus?.periodScores?.length ?? 0) >= 1)
           Text('period 1:'
-              ' ${result.sportEventStatus.periodScores[0].homeScore}'
+              ' ${sportEventStatus.periodScores[0].homeScore}'
               ' :'
-              ' ${result.sportEventStatus.periodScores[0].awayScore}'),
-        if ((result?.sportEventStatus?.periodScores?.length ?? 0) >= 2)
+              ' ${sportEventStatus.periodScores[0].awayScore}'),
+        if ((sportEventStatus?.periodScores?.length ?? 0) >= 2)
           Text('period 2:'
-              ' ${result.sportEventStatus.periodScores[1].homeScore}'
+              ' ${sportEventStatus.periodScores[1].homeScore}'
               ' :'
-              ' ${result.sportEventStatus.periodScores[1].awayScore}'),
-        Text('status: ${result?.sportEventStatus?.status}'),
-        Text('matchStatus: ${result?.sportEventStatus?.matchStatus}'),
+              ' ${sportEventStatus.periodScores[1].awayScore}'),
+        Text('status: ${sportEventStatus?.status}'),
+        Text('matchStatus: ${sportEventStatus?.matchStatus}'),
       ],
     );
   }

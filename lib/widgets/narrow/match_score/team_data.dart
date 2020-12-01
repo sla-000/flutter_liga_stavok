@@ -17,13 +17,23 @@ class TeamData extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        TeamDress(home: home),
-        const SizedBox(width: 8),
-        TeamAbbreviation(home: home),
-        const SizedBox(width: 8),
-        Expanded(child: TeamName(home: home)),
-        const SizedBox(width: 8),
-        TeamScore(home: home),
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: TeamDress(home: home),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: TeamAbbreviation(home: home),
+        ),
+        Expanded(
+            child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: TeamName(home: home),
+        )),
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: TeamScore(home: home),
+        ),
       ],
     );
   }

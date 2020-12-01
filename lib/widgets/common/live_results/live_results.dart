@@ -14,9 +14,10 @@ class LiveResults extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<Result>(
+    return StreamBuilder<SportEventStatus>(
       stream: getIt.get<LiveResultsBloc>().stream,
-      builder: (BuildContext context, AsyncSnapshot<Result> snapshot) {
+      builder:
+          (BuildContext context, AsyncSnapshot<SportEventStatus> snapshot) {
         if (snapshot.hasError) {
           return const LiveResult();
         }
@@ -24,7 +25,7 @@ class LiveResults extends StatelessWidget {
         if (snapshot.hasData) {
           return LiveResult(
             key: ValueKey<int>(snapshot.data.hashCode),
-            result: snapshot.data,
+            sportEventStatus: snapshot.data,
           );
         }
 

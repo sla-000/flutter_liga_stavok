@@ -46,11 +46,11 @@ class Controls extends StatelessWidget {
                       onPressed: () => _getToday(context),
                     ),
                     const SizedBox(width: 8),
-                    // RaisedButton(
-                    //   child: const Icon(Icons.calendar_today, size: 16),
-                    //   onPressed: () => _selectDate(context),
-                    // ),
-                    // const SizedBox(width: 8),
+                    RaisedButton(
+                      child: const Icon(Icons.calendar_today, size: 16),
+                      onPressed: () => _selectDate(context),
+                    ),
+                    const SizedBox(width: 8),
                     RaisedButton(
                       child: const Icon(Icons.settings, size: 16),
                       onPressed: () => _settings(context),

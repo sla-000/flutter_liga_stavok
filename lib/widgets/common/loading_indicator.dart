@@ -11,9 +11,10 @@ class LoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<Result>(
+    return StreamBuilder<SportEventStatus>(
       stream: getIt.get<LiveResultsBloc>().stream,
-      builder: (BuildContext context, AsyncSnapshot<Result> snapshot) {
+      builder:
+          (BuildContext context, AsyncSnapshot<SportEventStatus> snapshot) {
         if (snapshot.hasError) {
           if (snapshot.error is AppBusy) {
             return Container(

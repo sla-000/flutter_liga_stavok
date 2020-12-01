@@ -14,7 +14,7 @@ import 'package:rxdart/rxdart.dart';
 
 final Logger _log = Logger('LiveResultsBloc');
 
-class LiveResultsBloc extends SubscribeBloc<SportEvent, Result> {
+class LiveResultsBloc extends SubscribeBloc<SportEvent, SportEventStatus> {
   @override
   StreamSubscription<SportEvent> subscribe() {
     return CombineLatestStream.combine2<SportEvent, void, SportEvent>(
@@ -42,12 +42,12 @@ class LiveResultsBloc extends SubscribeBloc<SportEvent, Result> {
           orElse: () => null,
         );
 
-        if (result == null) {
+        if (result?.sportEventStatus == null) {
           clear();
           return;
         }
 
-        add(result);
+        add(result.sportEventStatus);
       } on Exception catch (error) {
         _log.warning(() => 'subscribe: error=$error');
         addError(error);
