@@ -5,6 +5,8 @@ import 'package:flutter_liga_stavok/logic/team_profile/home_team_bloc.dart';
 import 'package:flutter_liga_stavok/logic/team_profile/team_profile_bloc.dart';
 import 'package:flutter_liga_stavok/rest/models/team_profile.dart'
     as team_profile;
+import 'package:flutter_liga_stavok/theme/durations.dart';
+import 'package:flutter_liga_stavok/utils/exception.dart';
 import 'package:flutter_liga_stavok/widgets/common/team_profile/jersey.dart';
 import 'package:logging/logging.dart';
 
@@ -38,7 +40,7 @@ class AwayTeamJersey extends StatelessWidget {
   }
 }
 
-class TeamProfile extends StatelessWidget {
+class TeamProfile extends StatefulWidget {
   const TeamProfile({
     Key key,
     @required this.home,
@@ -49,24 +51,53 @@ class TeamProfile extends StatelessWidget {
   final bool home;
 
   @override
+  _TeamProfileState createState() => _TeamProfileState();
+}
+
+class _TeamProfileState extends State<TeamProfile> {
+  team_profile.Data lastData;
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<team_profile.Data>(
-      stream: bloc.stream,
+      stream: widget.bloc.stream,
       builder:
           (BuildContext context, AsyncSnapshot<team_profile.Data> snapshot) {
         if (snapshot.hasError) {
-          return const _TeamJersey();
-        }
+          if (snapshot.error is AppBusy) {
+            return AnimatedSwitcher(
+              duration: kSmallDuration,
+              child: _TeamJersey(
+                home: widget.home,
+                key: ValueKey<int>(lastData?.hashCode),
+                data: lastData,
+              ),
+            );
+          }
 
-        if (snapshot.hasData) {
-          return _TeamJersey(
-            home: home,
-            key: ValueKey<int>(snapshot.data.hashCode),
-            data: snapshot.data,
+          return const AnimatedSwitcher(
+            duration: kSmallDuration,
+            child: _TeamJersey(),
           );
         }
 
-        return const _TeamJersey();
+        if (snapshot.hasData) {
+          lastData = snapshot.data;
+
+          return AnimatedSwitcher(
+            duration: kSmallDuration,
+            child: _TeamJersey(
+              home: widget.home,
+              key: ValueKey<int>(snapshot.data.hashCode),
+              data: snapshot.data,
+            ),
+          );
+        }
+
+        return const AnimatedSwitcher(
+          duration: kSmallDuration,
+          child: _TeamJersey(),
+        );
       },
     );
   }
