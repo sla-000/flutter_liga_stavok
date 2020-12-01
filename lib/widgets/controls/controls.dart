@@ -55,6 +55,11 @@ class Controls extends StatelessWidget {
                       child: const Icon(Icons.settings, size: 16),
                       onPressed: () => _settings(context),
                     ),
+                    const SizedBox(width: 8),
+                    RaisedButton(
+                      child: const Icon(Icons.cancel, size: 16),
+                      onPressed: () => _cancel(),
+                    ),
                   ],
                 ),
               ),
@@ -125,5 +130,9 @@ class Controls extends StatelessWidget {
         return SettingsDialog();
       },
     );
+  }
+
+  void _cancel() async {
+    getIt.get<SelectedEventBloc>().clear();
   }
 }
