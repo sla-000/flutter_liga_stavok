@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/widgets/common/loading_indicator.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/match_score/match_score.dart';
-import 'package:flutter_liga_stavok/widgets/narrow/match_time.dart';
+import 'package:flutter_liga_stavok/widgets/narrow/match_time/match_time.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/start_time.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/team_chances.dart';
 import 'package:flutter_liga_stavok/widgets/narrow/tournament_name.dart';
@@ -27,12 +27,8 @@ class LigaStavokNarrow extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.max,
               children: const <Widget>[
-                Flexible(
-                  flex: 30,
-                  child: MatchTime(),
-                ),
-                Flexible(
-                  flex: 70,
+                MatchTime(),
+                Expanded(
                   child: TeamsChances(),
                 ),
               ],

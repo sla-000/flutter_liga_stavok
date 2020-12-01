@@ -34,7 +34,6 @@ class FunFacts extends StatelessWidget {
         }
 
         if (snapshot.hasData) {
-          _log.finest(() => 'build: data=${snapshot.data}');
           return _FunFacts(
             key: ValueKey<int>(snapshot.data.hashCode),
             strings: snapshot.data,
