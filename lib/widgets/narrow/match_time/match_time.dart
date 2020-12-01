@@ -20,32 +20,47 @@ class MatchTime extends StatelessWidget {
       builder:
           (BuildContext context, AsyncSnapshot<SportEventStatus> snapshot) {
         if (snapshot.hasError) {
-          return const _MatchTime();
+          // never generates busy
+          // if (snapshot.error is AppBusy) {
+          //   return const _MatchTime();
+          // }
+
+          return const AnimatedSwitcher(
+            duration: kSmallDuration,
+            child: _MatchTime(),
+          );
         }
 
         if (snapshot.hasData) {
+          final SportEventStatus data = snapshot.data;
+
           String matchTime;
           int period;
           bool show = false;
 
-          if (snapshot.data.status == 'live') {
-            matchTime = snapshot.data.clock?.matchTime;
-            period = snapshot.data.period;
+          if (data.status == 'live') {
+            matchTime = data.clock?.matchTime;
+            period = data.period;
             show = true;
           }
 
-          return _MatchTime(
-            show: show,
-            matchTime: matchTime,
-            period: period,
+          return AnimatedSwitcher(
+            duration: kSmallDuration,
+            child: _MatchTime(
+              key: ValueKey<String>(matchTime ?? ''),
+              show: show,
+              matchTime: matchTime,
+              period: period,
+            ),
           );
         }
 
-        return const _MatchTime();
+        return const AnimatedSwitcher(
+          duration: kSmallDuration,
+          child: _MatchTime(),
+        );
       },
     );
-
-    return _MatchTime();
   }
 }
 

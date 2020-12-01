@@ -61,6 +61,8 @@ class _TeamNameState extends State<TeamName> {
             );
           }
 
+          name = '';
+
           return const AnimatedSwitcher(
             duration: kSmallDuration,
             child: Center(),

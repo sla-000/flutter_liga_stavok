@@ -61,6 +61,8 @@ class _TeamScoreState extends State<TeamScore> {
             );
           }
 
+          data = null;
+
           return const AnimatedSwitcher(
             duration: kSmallDuration,
             child: Score(),

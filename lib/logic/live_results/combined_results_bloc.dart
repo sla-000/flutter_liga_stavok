@@ -41,7 +41,7 @@ class CombinedResultsBloc
             _combine)
         .listen((_SportEventStatus _sportEventStatus) async {
       _log.finest(() => 'subscribe: _sportEventStatus=$_sportEventStatus');
-      if (_sportEventStatus?.clear ?? false) {
+      if (_sportEventStatus == null || (_sportEventStatus?.clear ?? true)) {
         clear();
         return;
       }

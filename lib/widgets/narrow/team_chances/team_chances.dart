@@ -54,6 +54,8 @@ class _TeamsChancesState extends State<TeamsChances> {
           );
         }
 
+        outcomes = null;
+
         return const _Probabilities();
       },
     );

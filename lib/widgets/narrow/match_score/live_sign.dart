@@ -39,6 +39,7 @@ class _LiveSignState extends State<LiveSign> {
 
           return LiveText(show: show);
         }
+        show = false;
 
         return const LiveText();
       },

@@ -94,6 +94,8 @@ class _TeamProfileState extends State<TeamProfile> {
           );
         }
 
+        data = null;
+
         return const AnimatedSwitcher(
           duration: kSmallDuration,
           child: _TeamJersey(),

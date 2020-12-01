@@ -27,9 +27,6 @@ class JerseyLook extends StatelessWidget {
     final Color baseColor = parseColor(jersey?.base);
 
     final Color sleeveColor = parseColor(jersey?.sleeve);
-    _log.finest(() => 'build: baseColor=${jersey?.base}'
-        ', sleeveColor=${jersey?.sleeve}'
-        ', type=${jersey?.type}');
 
     for (int q = 0; q < colors.length; ++q) {
       colors[q] = baseColor;

@@ -17,10 +17,17 @@ import 'package:platform_date_picker/platform_date_picker.dart';
 
 final Logger _log = Logger('Controls');
 
-class Controls extends StatelessWidget {
+class Controls extends StatefulWidget {
   const Controls({
     Key key,
   }) : super(key: key);
+
+  @override
+  _ControlsState createState() => _ControlsState();
+}
+
+class _ControlsState extends State<Controls> {
+  bool enableEventsButtons = true;
 
   @override
   Widget build(BuildContext context) {
@@ -43,12 +50,15 @@ class Controls extends StatelessWidget {
                   children: <Widget>[
                     RaisedButton(
                       child: const Icon(Icons.sports_soccer, size: 16),
-                      onPressed: () => _getToday(context),
+                      onPressed:
+                          enableEventsButtons ? () => _getToday(context) : null,
                     ),
                     const SizedBox(width: 8),
                     RaisedButton(
                       child: const Icon(Icons.calendar_today, size: 16),
-                      onPressed: () => _selectDate(context),
+                      onPressed: enableEventsButtons
+                          ? () => _selectDate(context)
+                          : null,
                     ),
                     const SizedBox(width: 8),
                     RaisedButton(
@@ -74,25 +84,45 @@ class Controls extends StatelessWidget {
     final DateTime currentDate =
         DateTime.now().subtract(const Duration(hours: 4));
 
-    await _getDate(currentDate, context);
+    try {
+      setState(() {
+        enableEventsButtons = false;
+      });
+
+      await _getDate(currentDate, context);
+    } finally {
+      setState(() {
+        enableEventsButtons = true;
+      });
+    }
   }
 
   void _selectDate(BuildContext context) async {
     final DateTime currentDate = DateTime.now();
 
-    final DateTime selectedDate = await PlatformDatePicker.showDate(
-      context: context,
-      firstDate: currentDate.subtract(const Duration(days: 365 * 20)),
-      initialDate: currentDate,
-      lastDate: currentDate,
-    );
+    try {
+      setState(() {
+        enableEventsButtons = false;
+      });
 
-    if (selectedDate == null) {
-      _log.finest(() => '_selectDate: Cancelled');
-      return;
+      final DateTime selectedDate = await PlatformDatePicker.showDate(
+        context: context,
+        firstDate: currentDate.subtract(const Duration(days: 365 * 20)),
+        initialDate: currentDate,
+        lastDate: currentDate,
+      );
+
+      if (selectedDate == null) {
+        _log.finest(() => '_selectDate: Cancelled');
+        return;
+      }
+
+      await _getDate(selectedDate, context);
+    } finally {
+      setState(() {
+        enableEventsButtons = true;
+      });
     }
-
-    await _getDate(selectedDate, context);
   }
 
   Future<void> _getDate(DateTime currentDate, BuildContext context) async {

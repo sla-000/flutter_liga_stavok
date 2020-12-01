@@ -38,7 +38,6 @@ class Head2Head extends StatelessWidget {
         }
 
         if (snapshot.hasData) {
-          _log.finest(() => 'build: data=${snapshot.data}');
           return _Head2Head(
             key: ValueKey<int>(snapshot.data.hashCode),
             data: snapshot.data,
