@@ -19,29 +19,21 @@ class LigaStavok extends StatelessWidget {
     _log.finest(() => 'builder: size=$size');
 
     if (size.width < kWideScreenWidth) {
-      return ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: size.height * 0.3,
-          maxHeight: size.height * 0.6,
-        ),
-        child: const Card(
-          elevation: kCardElevation,
-          child: Padding(
-            padding: kCardPadding,
-            child: LigaStavokNarrow(),
-          ),
-        ),
-      );
-    } else {
       return const Card(
-        elevation: kCardElevation,
+        elevation: kImportantElevation,
         child: Padding(
           padding: kCardPadding,
           child: LigaStavokNarrow(),
         ),
       );
-      // todo add Wide
-      // return const LigaStavokWide();
+    } else {
+      return const Card(
+        elevation: kImportantElevation,
+        child: Padding(
+          padding: kCardPadding,
+          child: LigaStavokNarrow(), // todo add LigaStavokWide();
+        ),
+      );
     }
   }
 }

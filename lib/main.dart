@@ -69,8 +69,11 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.max,
           children: const <Widget>[
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: LigaStavok(),
+            ),
             Controls(),
-            LigaStavok(),
             Overview(),
           ],
         ),
