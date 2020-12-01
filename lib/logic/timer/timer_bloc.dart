@@ -9,12 +9,13 @@ class TimerBloc extends Bloc<void> {
   TimerBloc() {
     add(null);
 
-    _timer = Timer(duration, _onTimer);
+    _timer = Timer(_duration, _onTimer);
   }
 
   Timer _timer;
+  Duration get _duration => Duration(seconds: period);
 
-  Duration duration = const Duration(seconds: 120);
+  int period = 120;
 
   @override
   void dispose() {
@@ -29,6 +30,6 @@ class TimerBloc extends Bloc<void> {
     add(null);
 
     _timer.cancel();
-    _timer = Timer(duration, _onTimer);
+    _timer = Timer(_duration, _onTimer);
   }
 }

@@ -14,7 +14,10 @@ class ChanceValue extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 30,
-      child: Text('${value?.toStringAsFixed(1) ?? " "}'),
+      child: Text(
+        '${value?.toStringAsFixed(1) ?? " "}',
+        textAlign: TextAlign.right,
+      ),
     );
   }
 }

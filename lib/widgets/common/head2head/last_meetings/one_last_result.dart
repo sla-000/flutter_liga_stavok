@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_liga_stavok/rest/models/common.dart';
+import 'package:flutter_liga_stavok/utils/dateTime.dart';
 import 'package:logging/logging.dart';
 
 final Logger _log = Logger('OneLastResult');
@@ -24,7 +25,7 @@ class OneLastResult extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text('scheduled: ${result.sportEvent.scheduled}'),
+        Text('scheduled: ${getLocalTimeFromIso(result.sportEvent.scheduled)}'),
         if (result.sportEvent.competitors.length == 2)
           Text('teams: ${result.sportEvent.competitors[0].name}'
               ' (${result.sportEvent.competitors[0].abbreviation})'
